@@ -1,0 +1,33 @@
+.caja_padre {
+    width: 60%;
+}
+
+#formulario_login {
+    margin-top: 30px;
+    gap: 15px;
+}
+#errorEmail, #errorPassword {
+    color: red;
+    font-size: 90%;
+    list-style-type: none;
+}
+#errorEmail i, #errorPassword i{
+    font-size: 20px;
+}
+#show_icon {
+    width: 0%;
+    transform: translateX(-70px);
+    cursor: pointer;
+}
+.label_enlaces {
+    text-align: center;
+}
+@media screen and (max-width: 575.98px) {
+    #show_icon {
+        transform: translateX(-25px);
+        font-size: 20px;
+    }
+    .div_inputs {
+        align-items: center;
+    }
+}

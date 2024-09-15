@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head")%>
+  </head>
+  <body>
+      <header><%- include("../partials/header")%></header>
+    <main class="registro_main">
+      <div class="caja_padre">
+        <h1>Bienvenido Gamer</h1>
+        <h2>Registrate, solo tomara un momento</h2>
+        <form
+          action=" /stats "
+          enctype=" multipart/form-data "
+          method=" post "
+          class="registro_form"
+        >
+          <div class="div_inputs">
+            <i class="bx bx-user"></i>
+            <input type="text" placeholder="Ingrese su Nombre" class="inputs" required />
+          </div>
+          <div class="div_inputs">
+            <i class="bx bx-user"></i>
+            <input
+              type="text"
+              placeholder="Ingrese su Apellido"
+              class="inputs"
+              required
+            />
+          </div>
+          <div class="div_inputArchivo">
+            <i class='bx bxs-file-image'></i><label id="texto_selector_archivo">Seleccione una foto de perfil:</label>
+            <input type="file" id="selector_archivo" required accept="image/*"/>
+          </div>
+          <div class="div_inputs">
+            <i class="bx bx-envelope"></i>
+            <input type="email" placeholder="Ingrese su email" class="inputs" required />
+          </div>
+          <div class="div_selector">
+            <i class='bx bx-buildings'></i><label id="texto_selector">Seleccione su provincia:</label>
+            <select id="selector" required >
+             <option value="value1">Panamá</option>
+             <option value="value2">Colón</option>
+             <option value="value3">Chiriqui</option>
+             <option value="value4">Veraguas</option>
+             <option value="value5">Coclé</option>
+             <option value="value6">Herrera</option>
+             <option value="value7">Bocas del Toro</option>
+             <option value="value8">Los Santos</option>
+                <option value="value9">Darién</option>
+             <option value="value10">Panamá Oeste</option>
+            </select>
+        </div>
+          <div class="div_inputs">
+            <i class='bx bx-lock-alt'></i>
+            <input
+              type="password"
+              placeholder="Ingrese su contraseña"
+              class="inputs"
+              required
+            />
+          </div>
+          <div class="div_inputs">
+            <i class='bx bx-lock'></i>
+            <input
+              type="password"
+              placeholder="Repita su contraseña"
+              class="inputs"
+              required
+            />
+          </div>
+          <label class="label_enlaces">He leido y acepto las <a href="#">Politicas de privacidad</a><input id="input_checkbox" type="checkbox" required></label>
+          <label class="label_enlaces">¿Ya tienes una cuenta? <a href="/user/login">Inicia Sesión</a></label>
+        </form>
+        <button type="submit" class="boton_enviar" id="boton_enviar_registro">Enviar</button>
+      </div>
+    </main>
+    <footer><%- include("../partials/footer")%></footer>
+    <script src="/javascripts/home.js"></script>
+  </body>
+</html>

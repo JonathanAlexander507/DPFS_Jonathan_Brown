@@ -1,0 +1,2 @@
+# DPFS_Jonathan_Brown
+En retrospectiva del anterior sprint, pude hacer los bocetos requeridos para el proyecto, lo malo es que siento que aunque estan bien pueden mejorar y lo que debo cambiar es el hacerlo en el tiempo indicado ya que voy atrasado y los realice con apuro

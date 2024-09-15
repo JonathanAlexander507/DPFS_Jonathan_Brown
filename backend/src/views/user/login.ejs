@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head")%>
+  </head>
+  <body>
+    <header><%- include("../partials/header")%></header>
+    <main class="registro_main">
+      <div class="caja_padre">
+        <h1>Bienvenido Gamer</h1>
+        <h2>Inicia sesión para que puedas comprar</h2>
+        <form
+          action=" /stats "
+          enctype=" multipart/form-data "
+          method=" post "
+          class="registro_form"
+          id="formulario_login"
+        >
+          <div class="div_inputs" id="div_input_email">
+            <i class="bx bx-envelope" id="email_icon"></i>
+            <input
+              type="email"
+              placeholder="Ingrese su email"
+              class="inputs"
+              required
+              id="email_login"
+            />
+          </div>
+          <span id="errorEmail"></span>
+          <div class="div_inputs" id="div_input_pass">
+            <i class="bx bx-lock" id="pass_icon"></i>
+            <input
+              type="password"
+              placeholder="Ingrese su contraseña"
+              class="inputs"
+              required
+              id="password_login"
+            />
+            <i class='bx bx-show' id="show_icon"></i>
+          </div>
+          <span id="errorPassword"></span>
+          <label class="label_enlaces">¿No tienes una cuenta? <a href="/user/register">Registrate</a></label>
+          <button type="submit" class="boton_enviar" id="boton_enviar_login">Entrar</button>
+        </form>
+        
+      </div>
+    </main>
+    <footer><%- include("../partials/footer")%></footer>
+    <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/validacion_login.js"></script>
+  </body>
+</html>
