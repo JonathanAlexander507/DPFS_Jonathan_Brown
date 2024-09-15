@@ -1,6 +1,6 @@
 let details = {
-    index: (req, res) => {
-        return res.render("productDetails",{
+    details: (req, res) => {
+        return res.render("products/productDetail",{
             title: "Detalle de producto"
         })
     }

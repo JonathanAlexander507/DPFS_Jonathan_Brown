@@ -81,7 +81,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-main h1, main h3{
+.subtitulo_main, .titulo_main{
   color: white;
   text-align: center;
   text-shadow: 0 0 5px rgb(150, 0, 250);
@@ -110,16 +110,24 @@ main h1, main h3{
   height: 100%;
   object-fit: cover;
 }
+.carousel-caption {
+  color: white;
+  text-shadow: 0 0 5px rgb(150, 0, 250);
+}
 .carousel-caption a{
   color: white;
   text-decoration: none;
+  transition: all 0.5s ease-out;
 }
 .carousel-caption a:hover {
-  text-shadow: 0 0 15px rgb(187, 0, 255);
+  text-shadow: 0 0 5px rgb(150, 0, 250);
+  color: rgb(0, 200, 255);
 }
 .tarjetas_grupo {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+  justify-items: center;
+  margin: 0 auto;
   gap: 10px;
 }
 .tarjetas {
@@ -127,6 +135,7 @@ main h1, main h3{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: 10px;
   padding: 10px;
   width: 70%;
@@ -140,12 +149,46 @@ main h1, main h3{
   box-shadow: 0 0 20px rgb(176, 108, 221);
 }
 .imagen_producto {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 200px;
   background-color: black;
+  border: 1.5px solid rgb(0, 200, 255);
+  border-radius: 30px;
 }
-.descripcion {
+.imagen_producto img {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  object-fit: cover;
+}
+.nombre_producto {
   text-align: center;
+  margin-top: 10px;
+
+}
+.nombre_producto a{
+  text-decoration: none;
+  color: rgb(150, 0, 250);
+  text-shadow: 0 0 5px rgb(98, 108, 112);
+  text-decoration: none;
+  transition: all 0.5s ease-out;
+}
+.nombre_producto a:hover {
+  color: rgb(2, 162, 202);
+ text-shadow: 0 0 4px rgb(188, 188, 188);
+}
+.descripcion_producto {
+  text-align: center;
+  margin: 0;
+}
+.div_precio {
+  display: flex;
+  justify-content: space-around;
+}
+.precio_producto {
+  color: rgb(174, 68, 245);
+  border-bottom: 1.5px solid rgb(0, 200, 255);
+  text-shadow: 0 0 5px rgb(98, 108, 112);
 }
 .boton_añadir {
   border-radius: 20px;
@@ -155,9 +198,11 @@ main h1, main h3{
   background-color: transparent;
   border: solid 1.5px rgb(0, 200, 255);
   color: white;
+  text-shadow: 0 0 5px rgb(150, 0, 250);
+  transition: all 0.5s ease-out;
 }
 .boton_añadir:hover {
-  background-color: rgb(0, 200, 255);
+  color: rgb(0, 200, 255);
   box-shadow: 0 0 20px rgb(127, 110, 138);
   border: solid 1.5px rgb(150, 0, 250);
 }
@@ -268,7 +313,9 @@ margin-left: 50px;
   }
   .footer_uls li img {
     width: 95%;
-  
+  }
+  .copyright {
+    margin: 0;
   }
   }
 
@@ -352,5 +399,8 @@ header {
 .footer_uls li img {
   width: 95%;
 
+}
+.copyright {
+  margin: 0;
 }
 }
