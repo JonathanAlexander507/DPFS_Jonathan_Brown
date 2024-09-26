@@ -5,14 +5,14 @@
     <header><%- include("partials/header")%></header>
     <main>
       <h1 class="titulo_main">Bienvenido Jugador</h1>
-      <h3 class="subtitulo_main">A la página mas gaming de panamá</h3>
+      <h3 class="subtitulo_main">A la tienda online mas gaming de panamá</h3>
       <section class="contenedor_sliderPadre">
         <div class="contenedor_sliderHijo">
-          <div id="carouselExampleCaptions" class="carousel slide">
+          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button
                 type="button"
-                data-bs-target="#carouselExampleCaptions"
+                data-bs-target="#carouselExampleAutoplaying"
                 data-bs-slide-to="0"
                 class="active"
                 aria-current="true"
@@ -20,19 +20,19 @@
               ></button>
               <button
                 type="button"
-                data-bs-target="#carouselExampleCaptions"
+                data-bs-target="#carouselExampleAutoplaying"
                 data-bs-slide-to="1"
                 aria-label="Slide 2"
               ></button>
               <button
                 type="button"
-                data-bs-target="#carouselExampleCaptions"
+                data-bs-target="#carouselExampleAutoplaying"
                 data-bs-slide-to="2"
                 aria-label="Slide 3"
               ></button>
               <button
                 type="button"
-                data-bs-target="#carouselExampleCaptions"
+                data-bs-target="#carouselExampleAutoplaying"
                 data-bs-slide-to="3"
                 aria-label="Slide 4"
               ></button>
@@ -94,7 +94,7 @@
             <button
               class="carousel-control-prev"
               type="button"
-              data-bs-target="#carouselExampleCaptions"
+              data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="prev"
             >
               <span
@@ -106,7 +106,7 @@
             <button
               class="carousel-control-next"
               type="button"
-              data-bs-target="#carouselExampleCaptions"
+              data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="next"
             >
               <span
@@ -118,64 +118,30 @@
           </div>
         </div>
       </section>
-      <h3 class="subtitulo_main">Ofertas del mes:</h3>
+      <h3 class="subtitulo_main">Te puede interesar:</h3>
       <section class="tarjetas_grupo">
+       <% list.forEach(product => { %>
+
+       
         <article class="tarjetas">
-          <div class="imagen_producto"><img src="/images/mouse_logitech_g502.jpg" alt="imagen_producto" /></div>
-          <span class="nombre_producto"><a href="#">Logitech G 502 Lightspeed</a></span>
+          <div class="imagen_producto"><img src= "<%=product.image %>" alt="imagen_product" /></div>
+          <span class="nombre_producto"><a href="/productos/<%= product.id %>"><%=product.name %></a></span>
           <p class="descripcion_producto">
-            Mouse inalámbrico para juegos con sensor Hero 25K
+            <%=product.description %>
           </p>
-          <div class="div_precio"><span class="precio_texto">precio: </span><span class="precio_producto">199$</span></div>
+          <div class="div_precio"><span class="precio_texto">precio:</span><span class="precio_producto"><%=product.price%>$</span></div>
           <div>
             <button class="boton_añadir" type="submit">
               Añadir al carrito
             </button>
           </div>
         </article>
-        <article class="tarjetas">
-          <div class="imagen_producto"><img src="/images/audifonos_logitech_g635.webp" alt="imagen_producto" /></div>
-          <span class="nombre_producto"><a href="#">Logitech G 635 DTS</a></span>
-            <p class="descripcion_producto">
-              Auriculares para juegos con cable premium mejorados con la última tecnología avanzada de Logitech G
-            </p>
-            <div class="div_precio"><span class="precio_texto">precio: </span><span class="precio_producto">199$</span></div>
-          <div>
-            <button class="boton_añadir" type="submit">
-              Añadir al carrito
-            </button>
-          </div>
-        </article>
-        <article class="tarjetas">
-          <div class="imagen_producto"><img src="/images/sillagamer_cougar_rangerS.jpg" alt="imagen_producto" /></div>
-          <span class="nombre_producto"><a href="/products/productDetail">Silla Gamer Cougar Ranger</a></span>
-            <p class="descripcion_producto">
-              Reposacabezas y Diseño Lumbar, Cuero de PVC Transpirable Premium, Diseño de Cuadros de Diamante.
-            </p>
-            <div class="div_precio"><span class="precio_texto">precio: </span><span class="precio_producto">199$</span></div>
-          <div>
-            <button class="boton_añadir" type="submit">
-              Añadir al carrito
-            </button>
-          </div>
-        </article>
-        <article class="tarjetas">
-          <div class="imagen_producto"><img src="/images/ps5_pro.webp" alt="imagen_producto" /></div>
-          <span class="nombre_producto"><a href="#">PlayStation 5 Edicion Digital</a></span>
-            <p class="descripcion_producto">
-              maravíllate con gráficos increíbles y experimenta nuevas características de PS5.
-            </p>
-            <div class="div_precio"><span class="precio_texto">precio: </span><span class="precio_producto">199$</span></div>
-          <div>
-            <button class="boton_añadir" type="submit">
-              Añadir al carrito
-            </button>
-          </div>
-        </article>
+      <% }) %>
       </section>
     </main>
     <footer><%- include("partials/footer")%></footer>
     <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/tarjetas.js"></script>
   </body>
   
 </html>

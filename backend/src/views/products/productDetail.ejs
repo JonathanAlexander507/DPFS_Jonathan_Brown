@@ -11,25 +11,50 @@
         <div class="div_hijo_productos">
           <section class="section_imagenes_productos">
             <div class="img_producto_grande">
-              <img src="/images/audifonos_logitech_g635.webp" />
+              <i class='bx bx-left-arrow' id="flecha_izq" onclick="moverIzquierda()"></i>
+              <img src="<%=product.image %>" id="mainImage"/>
+              <i class='bx bx-right-arrow' id="flecha_der" onclick="moverDerecha()"></i>
+              <button type="button" id="agrandar_img" onclick="entrarPantallaCompleta()">Ver en pantalla completa</button>
             </div>
-            <div class="img_producto_chicas">
-              <img src="/images/audifonos_logitech_g635.webp" />
-              <img src="/images/audifonos_logitech_g635.webp" />
-              <img src="/images/audifonos_logitech_g635.webp" />
-              <img src="/images/audifonos_logitech_g635.webp" />
-            </div>     
-        </section>
+            <div id="modalFullscreen">
+              <img id="fullscreenImage" src="img_producto_1.jpg">
+              <button id="closeFullscreen" onclick="salirPantallaCompleta()"><i class='bx bx-x'></i></button>
+              <button id="flecha_full_izq" onclick="moverIzquierdaFull()"><i class='bx bx-left-arrow'></i></button>
+              <button id="flecha_full_der" onclick="moverDerechaFull()"> <i class='bx bx-right-arrow'></i></button>
+            </div>
+            <div class="thumbnails">
+              <img id="img_detalles_producto_1" src="<%=product.image1 %>" alt="Miniatura 1" onclick="cambiarImagen(this)">
+              <img id="img_detalles_producto_2" src="<%=product.image2 %>" alt="Miniatura 2" onclick="cambiarImagen(this)">
+              <img id="img_detalles_producto_3" src="<%=product.image3 %>" alt="Miniatura 3" onclick="cambiarImagen(this)">
+              <img id="img_detalles_producto_4" src="<%=product.image4 %>" alt="Miniatura 4" onclick="cambiarImagen(this)">
+            </div>
+          </section>
           <section class="section_texto_productos">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum illum
-            repellat necessitatibus nam voluptate amet repellendus deserunt
-            debitis blanditiis quas inventore doloremque dolorum, nesciunt ea
-            praesentium laborum ratione, aspernatur ullam!
+            <span class="nombre_producto"
+              ><a href="/products/productDetail"
+                ><%= product.name %></a
+              ></span
+            >
+            <ul class="lista_detalles_producto">
+             <li><%= product.brand %></li>
+             <li><%= product.model %></li>
+             <li><%= product.specs1 %></li>
+             <li><%= product.specs2 %></li>
+             <li><%= product.specs3 %></li>
+            </ul>
+            <p class="parrafo_producto">
+              <%=product.description2 %>
+            </p>
+            <div class="div_precio_producto"><span class="precio_texto_producto">Precio:</span><span class="precio_producto"><%= product.price %>$</span></div>
+            <button class="boton_añadir" type="submit">
+              Añadir al carrito
+            </button>
           </section>
         </div>
       </div>
     </main>
     <footer><%- include("../partials/footer")%></footer>
     <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/productDetail.js"></script>
   </body>
 </html>

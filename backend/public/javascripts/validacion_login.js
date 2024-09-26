@@ -50,7 +50,7 @@ function validacionEmail() {
 
 function validacionPassword() {
     let LoginError = document.querySelector("#errorPassword");
-    let botonInciar = document.querySelector('#boton_enviar')
+    
     let passIcon = document.querySelector("#pass_icon");
     if (Password.value.length == 0){
       LoginError.innerHTML = `<li><i class='bx bx-error-circle bx-tada' ></i>  Debe ingresar su contraseña</li>`

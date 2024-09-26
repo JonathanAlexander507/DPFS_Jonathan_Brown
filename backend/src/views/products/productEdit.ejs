@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head")%>
+  </head>
+  <body>
+    <header><%- include("../partials/header")%></header>
+    <main class="productos_main">
+      <div class="div_padre_productos">
+        <h1 class="titulo_productos">Editar Productos</h1>
+        <form class="form_busqueda_editar" id="buscadoreditar">
+            <div class="barra_busqueda2">
+              <input type="text" placeholder="buscar producto" />
+              <button id="lupa" type="submit" title="Buscar">
+                <i class="bx bx-search"></i>
+              </button>
+            </div>
+          </form>
+        <table class="table caption-top">
+            <caption>Lista de productos</caption>
+            <thead>
+              <tr>
+                <th scope="col">id #</th>
+                <th scope="col">producto</th>
+                <th scope="col">Edicion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Producto</td>
+                <td class="fila_icono"><a href="productDetail"><i class='bx bx-show icono_ver'></i></a> <a href="productLoad"><i class='bx bx-edit-alt icono_editar'></i></a> <form><button class="boton_borrar"><i class='bx bx-trash icono_borrar' ></i></button></form></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Producto</td>
+                <td class="fila_icono"><a href="productDetail"><i class='bx bx-show icono_ver'></i></a> <a href="productLoad"><i class='bx bx-edit-alt icono_editar'></i></a> <form><button class="boton_borrar"><i class='bx bx-trash icono_borrar' ></i></button></form></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Producto</td>
+                <td class="fila_icono"><a href="productDetail"><i class='bx bx-show icono_ver'></i></a> <a href="productLoad"><i class='bx bx-edit-alt icono_editar'></i></a> <form><button class="boton_borrar"><i class='bx bx-trash icono_borrar' ></i></button></form></td>
+               
+              </tr>
+            </tbody>
+          </table>
+        <span class="link_cargarProductos">¿desea añadir un producto? <a href="/products/productLoad" class="link_añadirProductos">click aqui</a></span>
+      </div>
+    </main>
+    <footer><%- include("../partials/footer")%></footer>
+    <script src="/javascripts/home.js"></script>
+  </body>
+</html>
