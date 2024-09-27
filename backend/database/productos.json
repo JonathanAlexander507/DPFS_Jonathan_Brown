@@ -164,12 +164,5 @@
     "image4": "/images/escritorio_gamer_cubi(4).jpg",
     "category": "muebles",
     "price": 60
-  },
-  {
-    "id": "1727387592331",
-    "name": "Lámpara de sobremesa de Super Mario",
-    "price": "25",
-    "description": "Lámpara de sobremesa de Super Mario",
-    "image": "/images/prueba.jpg"
   }
 ]

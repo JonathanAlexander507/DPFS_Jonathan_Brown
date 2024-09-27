@@ -2,6 +2,24 @@ const fs = require('fs');
 let productos = require('../../database/productos.json');
 
 let details = {
+    // Editar producto por ID
+edit: (req, res) => {
+    let productId = req.params.id; // Obtener ID de la URL
+    let product = productos.find(p => p.id == productId);
+
+    // Verificar si el producto existe
+    if (!product) {
+        return res.render("products/productEdit", {
+            title: "Editar Producto",
+            product: null // No hay producto, mostrar solo la barra de búsqueda
+        });
+    }
+
+    return res.render("products/productEdit", {
+        title: "Editar Producto",
+        product: product
+    });
+},
     // Mostrar los detalles de un producto
     details: (req, res) => {
         let productId = req.params.id;
@@ -17,12 +35,21 @@ let details = {
         });
     },
 
-    // Mostrar la página de agregar/editar producto
+    // Editar producto por ID
     edit: (req, res) => {
-        let productId = req.params.id;
+        let productId = req.params.id; // Obtener ID de la URL
         let product = productos.find(p => p.id == productId);
+
+        // Verificar si el producto existe
+        if (!product) {
+            return res.render("products/productEdit", {
+                title: "Editar Producto",
+                product: null // No hay producto, mostrar solo la barra de búsqueda
+            });
+        }
+
         return res.render("products/productEdit", {
-            title: product ? "Editar Producto" : "Agregar Producto",
+            title: "Editar Producto",
             product: product
         });
     },
@@ -38,19 +65,41 @@ let details = {
                 productos[productIndex] = {
                     id: productId,
                     name: req.body.name,
+                    category: req.body.category,
+                    brand: req.body.brand,
+                    model: req.body.model,
+                    specs1: req.body.specs1,
+                    specs2: req.body.specs2,
+                    specs3: req.body.specs3,
                     price: req.body.price,
                     description: req.body.description,
-                    image: req.body.image
+                    description2: req.body.description2,
+                    image: req.body.image,
+                    image1: req.body.image1,
+                    image2: req.body.image2,
+                    image3: req.body.image3,
+                    image4: req.body.image4
                 };
             }
         } else {
             // Agregar nuevo producto
             let newProduct = {
-                id: Date.now().toString(), // Generar un ID único
+                id: productos.length+1, // Generar un ID único
                 name: req.body.name,
+                category: req.body.category,
+                brand: req.body.brand,
+                model: req.body.model,
+                specs1: req.body.specs1,
+                specs2: req.body.specs2,
+                specs3: req.body.specs3,
                 price: req.body.price,
                 description: req.body.description,
-                image: req.body.image
+                description2: req.body.description2,
+                image: req.body.image,
+                image1: req.body.image1,
+                image2: req.body.image2,
+                image3: req.body.image3,
+                image4: req.body.image4
             };
             productos.push(newProduct);
         }
@@ -70,7 +119,7 @@ let details = {
         return res.redirect('/');
     },
 
-    // Cargar la página de agregar productos (otra vista específica si lo necesitas)
+    // Cargar la página de agregar productos
     load: (req, res) => {
         return res.render("products/productLoad", {
             title: "Agregar Productos"

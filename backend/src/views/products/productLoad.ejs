@@ -1,19 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <%- include("../partials/head")%>
-</head>
-<body>
-    <header><%- include("../partials/header")%></header>
+  <head>
+    <%- include("../partials/head") %>
+  </head>
+  <body>
+    <header><%- include("../partials/header") %></header>
     <main class="productos_main">
-        <div class="div_padre_productos">
-            <h1 class="titulo_productos">Agregar Productos</h1>
-            <form>
-                
-            </form>
-        </div>
+      <div class="div_padre_productos">
+        <h1 class="titulo_editar">Agregar Nuevo Producto</h1>
+        <form action="/productos/save" method="POST" class="form_editar_productos">
+            <input type="hidden" id="product-id" name="id" value="">
+            <!-- Campos para agregar producto -->
+            <label for="name">Nombre del producto:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="brand">Marca:</label>
+            <input type="text" id="brand" name="brand" required>
+
+            <label for="model">Modelo:</label>
+            <input type="text" id="model" name="model" required>
+
+            <label for="specs1">Especificación 1:</label>
+            <input type="text" id="specs1" name="specs1" required>
+
+            <label for="specs2">Especificación 2:</label>
+            <input type="text" id="specs2" name="specs2" required>
+
+            <label for="specs3">Especificación 3:</label>
+            <input type="text" id="specs3" name="specs3">
+
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="description2">Descripción 2:</label>
+            <textarea id="description2" name="description2" required></textarea>
+
+            <label for="image">Imagen principal (URL):</label>
+            <input type="text" id="image" name="image" required>
+            
+            <label for="image1">Imagen 1 (URL):</label>
+            <input type="text" id="image1" name="image1" required>
+           
+            <label for="image2">Imagen 2 (URL):</label>
+            <input type="text" id="image2" name="image2" required>
+           
+            <label for="image3">Imagen 3 (URL):</label>
+            <input type="text" id="image3" name="image3" required>
+           
+            <label for="image4">Imagen 4 (URL):</label>
+            <input type="text" id="image4" name="image4" required>
+
+            <label for="category">Categoría:</label>
+            <input type="text" id="category" name="category" required>
+
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price" required>
+
+            <button type="submit" class="botones_editar_producto">Agregar Producto</button>
+        </form>
+      </div>
     </main>
-    <footer><%- include("../partials/footer")%></footer>
-    <script src="/javascripts/home.js"></script>
-</body>
+    <footer><%- include("../partials/footer") %></footer>
+  </body>
 </html>
