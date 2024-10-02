@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head") %>
+</head>
+<body>
+    <header><%- include("../partials/header") %></header>
+    <main class="registro_main">
+    <div class="caja_padre">
+        <h1 class="titulo_main"><%= title %></h1>
+        <table class="listado_tabla">
+            <thead>
+                <tr>
+                    <th class="listado_th">ID</th>
+                    <th class="listado_th">Nombre</th>
+                    <th class="listado_th">Categoría</th>
+                    <th class="listado_th">Precio</th>
+                    <th class="listado_th">Stock</th>
+                    <th class="listado_th">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% productos.forEach(product => { %>
+                    <tr>
+                        <td class="listado_td"><%= product.id %></td>
+                        <td class="listado_td"><%= product.name %></td>
+                        <td class="listado_td"><%= product.category %></td>
+                        <td class="listado_td">$ <%= (product.price ? product.price.toFixed(2) : '0.00') %></td>
+                        <td class="listado_td"><%= product.stock %></td>
+                        <td class="listado_td">
+                            <a href="/products/productEdit/<%= product.id %>">
+                                <i class='bx bxs-edit'></i>
+                            </a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+    </main>
+    <footer><%- include("../partials/footer") %></footer>
+    <script src="/javascripts/home.js"></script>
+</body>
+</html>

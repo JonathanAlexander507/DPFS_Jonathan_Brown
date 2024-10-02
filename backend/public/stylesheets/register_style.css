@@ -20,7 +20,7 @@
     color: rgb(0, 200, 255);;
     text-shadow: 0 0 5px rgb(170, 0, 255);
 }
-.registro_form {
+.caja_padre form {
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -31,13 +31,13 @@
 .div_inputs {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
 }
 .div_inputs i {
     font-size: 40px;
     color: rgb(0, 200, 255);
     text-shadow: 0 0 5px rgb(170, 0, 255);
-    
 }
 .inputs {
     width: 85%;
@@ -53,26 +53,31 @@
 .div_inputArchivo {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
 }
 .div_inputArchivo i{
     color: rgb(0, 200, 255);
     text-shadow: 0 0 5px rgb(170, 0, 255);
     font-size: 35px;
-    margin-left: 10px;
+    margin-right: 10px;
 }
-#texto_selector_archivo {
-    font-size: 90%;
+.texto_selector_archivo {
+    font-size: 25px;
     color: white;
     text-shadow: 0 0 5px rgb(170, 0, 255);
 }
 
-#selector_archivo{
-    color: white;
-    width: 55%;
-    font-size: 90%;
-    font-weight: 400;
+#profile_image{
+    background-color: white;
+    width: 85%;
+    font-size: 20px;
+    margin-top: 10px;
+    border: 1.5px solid rgb(170, 0, 255);
+    border-radius: 20px;
+}
+#profile_image:hover {
+    box-shadow: 0 0 20px rgb(0, 200, 255);
 }
 .div_selector {
     width: 100%;
@@ -141,4 +146,9 @@
 }
 #input_checkbox {
     margin-left: 10px;
+}
+/* Estilo para los mensajes de error en el formulario de registro */
+.error {
+    color: red;
+    font-size: 17px;
 }

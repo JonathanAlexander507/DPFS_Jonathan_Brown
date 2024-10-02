@@ -2,24 +2,16 @@ const fs = require('fs');
 let productos = require('../../database/productos.json');
 
 let details = {
-    // Editar producto por ID
-edit: (req, res) => {
-    let productId = req.params.id; // Obtener ID de la URL
-    let product = productos.find(p => p.id == productId);
-
-    // Verificar si el producto existe
-    if (!product) {
+    // Mostrar la página de edición/agregar producto
+    edit: (req, res) => {
+        let productId = req.params.id;
+        let product = productos.find(p => p.id == productId);
         return res.render("products/productEdit", {
-            title: "Editar Producto",
-            product: null // No hay producto, mostrar solo la barra de búsqueda
+            title: "Editar o Agregar Producto",
+            product: product
         });
-    }
+    },
 
-    return res.render("products/productEdit", {
-        title: "Editar Producto",
-        product: product
-    });
-},
     // Mostrar los detalles de un producto
     details: (req, res) => {
         let productId = req.params.id;
@@ -31,25 +23,6 @@ edit: (req, res) => {
 
         return res.render("products/productDetail", {
             title: "Detalle de producto",
-            product: product
-        });
-    },
-
-    // Editar producto por ID
-    edit: (req, res) => {
-        let productId = req.params.id; // Obtener ID de la URL
-        let product = productos.find(p => p.id == productId);
-
-        // Verificar si el producto existe
-        if (!product) {
-            return res.render("products/productEdit", {
-                title: "Editar Producto",
-                product: null // No hay producto, mostrar solo la barra de búsqueda
-            });
-        }
-
-        return res.render("products/productEdit", {
-            title: "Editar Producto",
             product: product
         });
     },
@@ -71,7 +44,8 @@ edit: (req, res) => {
                     specs1: req.body.specs1,
                     specs2: req.body.specs2,
                     specs3: req.body.specs3,
-                    price: req.body.price,
+                    price: parseFloat(req.body.price),  // Convertir el precio a decimal
+                    stock: parseInt(req.body.stock),  // Convertir stock a número entero
                     description: req.body.description,
                     description2: req.body.description2,
                     image: req.body.image,
@@ -84,7 +58,7 @@ edit: (req, res) => {
         } else {
             // Agregar nuevo producto
             let newProduct = {
-                id: productos.length+1, // Generar un ID único
+                id: productos.length + 1, // Generar un ID único basado en la longitud del array
                 name: req.body.name,
                 category: req.body.category,
                 brand: req.body.brand,
@@ -92,7 +66,8 @@ edit: (req, res) => {
                 specs1: req.body.specs1,
                 specs2: req.body.specs2,
                 specs3: req.body.specs3,
-                price: req.body.price,
+                price: parseFloat(req.body.price),  // Convertir el precio a decimal
+                stock: parseInt(req.body.stock) || 100,  // Establecer stock con un valor predeterminado de 100 si no se proporciona
                 description: req.body.description,
                 description2: req.body.description2,
                 image: req.body.image,
@@ -123,6 +98,14 @@ edit: (req, res) => {
     load: (req, res) => {
         return res.render("products/productLoad", {
             title: "Agregar Productos"
+        });
+    },
+
+    // Mostrar lista de todos los productos
+    list: (req, res) => {
+        return res.render("products/productList", {
+            title: "Lista de Productos",
+            productos: productos // Pasar todos los productos a la vista
         });
     }
 };

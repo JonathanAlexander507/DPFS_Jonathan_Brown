@@ -1,39 +1,41 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Laptop HP omen 16",
+    "category": "computadoras",
     "brand": "HP",
     "model": "OMEN 16-wd0002la",
     "specs1": "Intel 13ª generación Core i7-13700HX, 32G DDR5 RAM, 1TB SSD, Geforce RTX 4060 8GB",
     "specs2": "Pantalla FHD de 16 pulgadas",
     "specs3": "Win11 Home",
+    "price": 1603,
+    "stock": 100,
     "description": "Pantalla FHD de 16 pulgadas, Intel 13ª generación Core i7-13700HX, 32G DDR5 RAM, 1TB SSD, Geforce RTX 4060 8GB Win11 Home",
     "description2": "Con la nueva generación de procesadores Intel® Core-i H™ de 13ª generación, tarjetas gráficas hasta NVIDIA GeForce® RTX™ 4060, cámara de privacidad FHD, pantalla antiparpadeo de alta tasa de refresco y con capacidad de expansión de memoria o almacenamiento, alcanzarás el máximo nivel de juego",
     "image": "/images/hp_omen16.jpg",
     "image1": "/images/hp_omen16(1).jpg",
     "image2": "/images/hp_omen16(2).jpg",
     "image3": "/images/hp_omen16(3).jpg",
-    "image4": "/images/hp_omen16(4).jpg",
-    "category": "computadoras",
-    "price": 1600
+    "image4": "/images/hp_omen16(4).jpg"
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Monitor LG UltraWide 29WQ500",
+    "category": "perifericos",
     "brand": "LG",
     "model": "UltraWide 29WQ500",
     "specs1": "29 pulgadas, Full HD 2560 x 1080, IPS WLED",
     "specs2": "Tiempo de Refresco 100Hz",
     "specs3": "HDMI, DisplayPort",
+    "price": 270.04,
+    "stock": 100,
     "description": "Monitor, 29 pulgadas, Full HD 2560 x 1080, IPS WLED, 21:9, Tiempo de Refresco 100Hz, HDMI, DisplayPort, Negro",
     "description2": "Los monitores UltraWide premium de LG te sumergen en todo, desde la creación de contenidos hasta los juegos. Disfruta de una vista panorámica con la pantalla IPS 21:9 extra ancha para una precisión del color real en ángulos amplios. Todo lo que necesitas para trabajar, jugar y, sobre todo, realizar varias tareas a la vez nunca ha sido tan fácil.",
     "image": "/images/pantalla_LGultrawide.jpg",
     "image1": "/images/pantalla_LGultrawide(1).jpg",
     "image2": "/images/pantalla_LGultrawide(2).jpg",
     "image3": "/images/pantalla_LGultrawide(3).jpg",
-    "image4": "/images/pantalla_LGultrawide(4).jpg",
-    "category": "perifericos",
-    "price": 270
+    "image4": "/images/pantalla_LGultrawide(4).jpg"
   },
   {
     "id": 3,
@@ -46,7 +48,8 @@
     "image3": "/images/teclado_keychron_k4(3).jpg",
     "image4": "/images/teclado_keychron_k4(4).jpg",
     "category": "perifericos",
-    "price": 99
+    "price": 99,
+    "stock": 100
   },
   {
     "id": 4,
@@ -59,7 +62,8 @@
     "image3": "/images/nintendo_switch(3).jpg",
     "image4": "/images/nintendo_switch(4).jpg",
     "category": "consolas",
-    "price": 285
+    "price": 285,
+    "stock": 100
   },
   {
     "id": 5,
@@ -72,7 +76,8 @@
     "image3": "/images/logitech_g29(3).jpg",
     "image4": "/images/logitech_g29(4).jpg",
     "category": "perifericos",
-    "price": 350
+    "price": 350,
+    "stock": 100
   },
   {
     "id": 6,
@@ -85,7 +90,8 @@
     "image3": "/images/audifonos_logitech_g635(3).jpg",
     "image4": "/images/audifonos_logitech_g635(4).jpg",
     "category": "perifericos",
-    "price": 120
+    "price": 120,
+    "stock": 100
   },
   {
     "id": 7,
@@ -98,7 +104,8 @@
     "image3": "/images/sillagamer_cougar_rangerS(3).jpg",
     "image4": "/images/sillagamer_cougar_rangerS(4).jpg",
     "category": "muebles",
-    "price": 350
+    "price": 350,
+    "stock": 100
   },
   {
     "id": 8,
@@ -111,7 +118,8 @@
     "image3": "/images/ps5_pro(3).jpg",
     "image4": "/images/ps5_pro(4).jpg",
     "category": "consolas",
-    "price": 600
+    "price": 600,
+    "stock": 100
   },
   {
     "id": 9,
@@ -124,7 +132,8 @@
     "image3": "/images/mouse_logitech_g502(3).jpg",
     "image4": "/images/mouse_logitech_g502(4).jpg",
     "category": "perifericos",
-    "price": 100
+    "price": 100,
+    "stock": 100
   },
   {
     "id": 10,
@@ -137,7 +146,8 @@
     "image3": "/images/asus_rog_strix_g16(3).jpg",
     "image4": "/images/asus_rog_strix_g16(4).jpg",
     "category": "computadoras",
-    "price": 1300
+    "price": 1300,
+    "stock": 100
   },
   {
     "id": 11,
@@ -150,7 +160,8 @@
     "image3": "/images/red_magic_9s(3).jpg",
     "image4": "/images/red_magic_9s(4).jpg",
     "category": "telefonos",
-    "price": 900
+    "price": 900,
+    "stock": 100
   },
   {
     "id": 12,
@@ -163,6 +174,7 @@
     "image3": "/images/escritorio_gamer_cubi(3).jpg",
     "image4": "/images/escritorio_gamer_cubi(4).jpg",
     "category": "muebles",
-    "price": 60
+    "price": 60,
+    "stock": 100
   }
 ]

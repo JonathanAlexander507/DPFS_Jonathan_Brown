@@ -1,81 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("../partials/head")%>
-  </head>
-  <body>
-      <header><%- include("../partials/header")%></header>
+<head>
+    <%- include("../partials/head") %>
+</head>
+<body>
+    <header><%- include("../partials/header") %></header>
     <main class="registro_main">
-      <div class="caja_padre">
-        <h1 class="titulo_main">Bienvenido Gamer</h1>
-        <h2 class="subtitulo_main_registro">Registrate, solo tomara un momento</h2>
-        <form
-          action=" /stats "
-          enctype=" multipart/form-data "
-          method=" post "
-          class="registro_form"
-        >
-          <div class="div_inputs">
-            <i class="bx bx-user"></i>
-            <input type="text" placeholder="Ingrese su Nombre" class="inputs" required />
-          </div>
-          <div class="div_inputs">
-            <i class="bx bx-user"></i>
-            <input
-              type="text"
-              placeholder="Ingrese su Apellido"
-              class="inputs"
-              required
-            />
-          </div>
-          <div class="div_inputArchivo">
-            <i class='bx bxs-file-image'></i><label id="texto_selector_archivo">Seleccione una foto de perfil:</label>
-            <input type="file" id="selector_archivo" required accept="image/*"/>
-          </div>
-          <div class="div_inputs">
-            <i class="bx bx-envelope"></i>
-            <input type="email" placeholder="Ingrese su email" class="inputs" required />
-          </div>
-          <div class="div_selector">
-            <i class='bx bx-buildings'></i><label id="texto_selector">Seleccione su provincia:</label>
-            <select id="selector" required >
-             <option value="value1">Panamá</option>
-             <option value="value2">Colón</option>
-             <option value="value3">Chiriqui</option>
-             <option value="value4">Veraguas</option>
-             <option value="value5">Coclé</option>
-             <option value="value6">Herrera</option>
-             <option value="value7">Bocas del Toro</option>
-             <option value="value8">Los Santos</option>
-                <option value="value9">Darién</option>
-             <option value="value10">Panamá Oeste</option>
-            </select>
+        <div class="caja_padre">
+            <h1 class="titulo_main">Bienvenido Gamer</h1>
+            <h2 class="subtitulo_main_registro">Regístrate, solo tomará un momento</h2>
+            <form action="/user/register" method="POST" id="registro_form" enctype="multipart/form-data">
+                <div class="div_inputs">
+                    <label for="name"><i class="bx bx-user" id="name_icon"></i></label>
+                    <input type="text" id="name" name="name" placeholder="Nombre" class="inputs" required>
+                    <span id="nameError" class="error"></span>
+                </div class="div_inputs">
+
+                <div class="div_inputs">
+                    <label for="last_name"><i class="bx bx-user" id="lastname_icon"></i></label>
+                    <input type="text" id="last_name" name="last_name" placeholder="Apellido" class="inputs" required>
+                    <span id="lastNameError" class="error"></span>
+                </div class="div_inputs">
+
+                <div class="div_inputArchivo">
+                    <span><i class='bx bxs-file-image' id="image_icon"></i></span>
+                    <label for="profile_image" class="texto_selector_archivo">Selecciona tu foto de perfil:</label>
+                    <input type="file" id="profile_image" name="profile_image" accept="image/png, image/jpeg, image/jpg" class="inputs" required>
+                    <span id="imageError" class="error"></span>
+                </div>            
+            
+                <div class="div_inputs">
+                    <label for="email"><i class="bx bx-envelope" id="email_icon"></i></label>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" class="inputs" required>
+                    <span id="emailError" class="error"></span>
+                </div class="div_inputs">
+            
+                <div class="div_inputs">
+                    <label for="province"><i class='bx bx-buildings' id="province_icon"></i></label>
+                    <select id="province" name="province" class="inputs" required>
+                        <option value="">Selecciona una provincia</option>
+                        <option value="Bocas del Toro">Bocas del Toro</option>
+                        <option value="Chiriquí">Chiriquí</option>
+                        <option value="Coclé">Coclé</option>
+                        <option value="Colón">Colón</option>
+                        <option value="Darien">Darién</option>
+                        <option value="Herrera">Herrera</option>
+                        <option value="Los Santos">Los Santos</option>
+                        <option value="Panamá">Panamá</option>
+                        <option value="San Blas">San Blas</option>
+                        <option value="Veraguas">Veraguas</option>
+                    </select>
+                    <span id="provinceError" class="error"></span>
+                </div>
+
+                <div class="div_inputs">
+                    <label for="user_type"><i class='bx bx-user-circle' id="user_type_icon"></i></label>
+                    <select id="user_type" name="user_type" class="inputs">
+                        <option value="">Selecciona el tipo de usuario:</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                    <span id="userTypeError" class="error"></span>
+                </div>
+            
+                <div class="div_inputs">
+                    <label for="password"><i class='bx bx-lock-alt' id="pass1_icon"></i></label>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" class="inputs" required>
+                    <span id="passwordError" class="error"></span>
+                </div>
+            
+                <div class="div_inputs">
+                    <label for="confirm_password"><i class='bx bx-lock' id="pass2_icon"></i></label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar contraseña" class="inputs" required>
+                    <span id="confirmPasswordError" class="error"></span>
+                </div>
+                <div class="div_inputs">
+                <label for="terms" class="label_enlaces">
+                <input type="checkbox" id="terms" name="terms"> He leído y acepto los <a href="/terms" target="_blank">términos y condiciones</a>
+                </label>
+                <span id="termsError" class="error"></span>
+                </div>
+                <button type="submit" class="boton_enviar">Registrarse</button>
+            </form>
+            
+            <label class="label_enlaces">¿Ya tienes una cuenta? <a href="/user/login">Inicia Sesión</a></label>
         </div>
-          <div class="div_inputs">
-            <i class='bx bx-lock-alt'></i>
-            <input
-              type="password"
-              placeholder="Ingrese su contraseña"
-              class="inputs"
-              required
-            />
-          </div>
-          <div class="div_inputs">
-            <i class='bx bx-lock'></i>
-            <input
-              type="password"
-              placeholder="Repita su contraseña"
-              class="inputs"
-              required
-            />
-          </div>
-          <label class="label_enlaces">He leido y acepto las <a href="#">Politicas de privacidad</a><input id="input_checkbox" type="checkbox" required></label>
-          <label class="label_enlaces">¿Ya tienes una cuenta? <a href="/user/login">Inicia Sesión</a></label>
-        </form>
-        <button type="submit" class="boton_enviar" id="boton_enviar_registro">Enviar</button>
-      </div>
     </main>
-    <footer><%- include("../partials/footer")%></footer>
+    <footer><%- include("../partials/footer") %></footer>
+    <script src="/javascripts/registerVal.js"></script>
     <script src="/javascripts/home.js"></script>
-  </body>
+</body>
 </html>

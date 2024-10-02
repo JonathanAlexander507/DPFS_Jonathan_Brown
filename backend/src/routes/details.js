@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-let detailsController = require('../controller/detailscontroller');
+let detailsController = require('../controller/detailscontroller'); // Asegúrate de que esta ruta sea correcta
 
-// Ruta para editar un producto por ID (esto debe ser correcto)
+// Ruta para editar un producto por ID
 router.get('/products/productEdit/:id?', detailsController.edit); // ID opcional aquí
 
 // Ruta para guardar un producto (agregar o editar)
@@ -12,9 +12,11 @@ router.post('/productos/save', detailsController.save);
 router.post('/productos/delete/:id', detailsController.delete);
 
 // Ruta para cargar la página de agregar productos
-router.get('/products/productLoad', detailsController.load);
+router.get('/products/productLoad', detailsController.load); // Asegúrate de que esta línea esté presente
 
-// Ruta para cargar la página de agregar productos
+// Ruta para cargar la página de detalles de un producto
 router.get('/products/productDetail/:id', detailsController.details);
+
+router.get("/products/productList", detailsController.list);
 
 module.exports = router;

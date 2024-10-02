@@ -1,0 +1,28 @@
+.caja_padre {
+    width: 95%;
+}
+.listado_tabla {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1.5px solid rgb(170, 0, 255);
+    width: 95%;
+}
+.listado_th {
+    border: 1px solid rgb(170, 0, 255);
+    text-align: center; 
+    color: white;
+    text-shadow: 0 0 5px rgb(170, 0, 255);
+}
+.listado_td {
+    border: 1px solid rgb(0, 200, 255);
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 5px rgb(170, 0, 255);
+}
+.listado_td a {
+    text-decoration: none;
+    color: rgb(0, 200, 255);
+}
+.listado_td a:hover {
+    color: rgb(170, 0, 255);
+ }

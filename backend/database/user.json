@@ -1,0 +1,12 @@
+[
+  {
+    "user_id": 1727905819255,
+    "name": "John",
+    "last_name": "Doe",
+    "profile_image": "1727905819040.jpg",
+    "email": "thepunisher@gmail.com",
+    "province": "Colón",
+    "user_type": "cliente",
+    "password": "$2b$10$cL5yJwpGCmEdocqPO.U2aeS9iMjEB5g.XLEYVAm2AB2LVjh/9Ru.i"
+  }
+]
