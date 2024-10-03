@@ -17,7 +17,7 @@
         <ul id="suggestions"></ul>
 
         <% if (product) { %>
-          <form action="/productos/save" method="POST" class="form_editar_productos">
+          <form action="/productos/save" method="POST" class="form_editar_productos" enctype="multipart/form-data"> 
               <input type="hidden" id="product-id" name="id" value="<%= product.id %>">
               
               <label for="name">Nombre del producto:</label>
@@ -44,20 +44,21 @@
               <label for="description2">Descripción 2:</label>
               <textarea id="description2" name="description2" required><%= product.description2 %></textarea>
 
-              <label for="image">Imagen principal (URL):</label>
-              <input type="text" id="image" name="image" value="<%= product.image %>" required>
-
-              <label for="image1">Imagen 1 (URL):</label>
-              <input type="text" id="image1" name="image1" value="<%= product.image1 %>" required>
-           
-            <label for="image2">Imagen 2 (URL):</label>
-            <input type="text" id="image2" name="image2" value="<%= product.image2 %>" required>
-           
-            <label for="image3">Imagen 3 (URL):</label>
-            <input type="text" id="image3" name="image3" value="<%= product.image3 %>" required>
-           
-            <label for="image4">Imagen 4 (URL):</label>
-            <input type="text" id="image4" name="image4" value="<%= product.image4 %>" required>
+              <label for="image">Imagen principal:</label>
+            <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.gif,.webp">
+        
+            <!-- Campos para imágenes adicionales -->
+            <label for="image1">Imagen adicional 1:</label>
+            <input type="file" id="image1" name="image1" accept=".jpg,.jpeg,.png,.gif,.webp">
+        
+            <label for="image2">Imagen adicional 2:</label>
+            <input type="file" id="image2" name="image2" accept=".jpg,.jpeg,.png,.gif,.webp">
+        
+            <label for="image3">Imagen adicional 3:</label>
+            <input type="file" id="image3" name="image3" accept=".jpg,.jpeg,.png,.gif,.webp">
+        
+            <label for="image4">Imagen adicional 4:</label>
+            <input type="file" id="image4" name="image4" accept=".jpg,.jpeg,.png,.gif,.webp">
 
               <label for="category">Categoría:</label>
               <input type="text" id="category" name="category" value="<%= product.category %>" required>
@@ -78,7 +79,13 @@
         <% } else { %>
           <p class="avisos_edit">Por favor, ingresa un ID válido para buscar el producto.</p>
         <% } %>
-
+        <% if (errors && errors.length > 0) { %>
+          <ul class="errores_productEdit">
+              <% errors.forEach(error => { %>
+                  <li><%= error.msg %></li>
+              <% }) %>
+          </ul>
+      <% } %>      
         <!-- Enlace para ir a la página de agregar productos -->
         <p class="avisos_edit">
           ¿Quieres agregar un nuevo producto? 

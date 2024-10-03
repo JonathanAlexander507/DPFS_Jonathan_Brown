@@ -8,7 +8,7 @@
     <main class="productos_main">
       <div class="div_padre_productos">
         <h1 class="titulo_editar">Agregar Nuevo Producto</h1>
-        <form action="/productos/save" method="POST" class="form_editar_productos">
+        <form action="/productos/save" method="POST" class="form_editar_productos" enctype="multipart/form-data">
             <input type="hidden" id="product-id" name="id" value="">
             <!-- Campos para agregar producto -->
             <label for="name">Nombre del producto:</label>
@@ -35,20 +35,21 @@
             <label for="description2">Descripción 2:</label>
             <textarea id="description2" name="description2" required></textarea>
 
-            <label for="image">Imagen principal (URL):</label>
-            <input type="text" id="image" name="image" required>
-            
-            <label for="image1">Imagen 1 (URL):</label>
-            <input type="text" id="image1" name="image1" required>
-           
-            <label for="image2">Imagen 2 (URL):</label>
-            <input type="text" id="image2" name="image2" required>
-           
-            <label for="image3">Imagen 3 (URL):</label>
-            <input type="text" id="image3" name="image3" required>
-           
-            <label for="image4">Imagen 4 (URL):</label>
-            <input type="text" id="image4" name="image4" required>
+            <label for="image">Imagen principal:</label>
+            <input type="file" id="image" name="image" accept=".jpg,.jpeg,.png,.gif,.webp" required>
+        
+            <!-- Campos para imágenes adicionales -->
+            <label for="image1">Imagen adicional 1:</label>
+            <input type="file" id="image1" name="image1" accept=".jpg,.jpeg,.png,.gif,.webp">
+        
+            <label for="image2">Imagen adicional 2:</label>
+            <input type="file" id="image2" name="image2" accept=".jpg,.jpeg,.png,.gif,.webp">
+        
+            <label for="image3">Imagen adicional 3:</label>
+            <input type="file" id="image3" name="image3" accept=".jpg,.jpeg,.png,.gif,.webp">
+        
+            <label for="image4">Imagen adicional 4:</label>
+            <input type="file" id="image4" name="image4" accept=".jpg,.jpeg,.png,.gif,.webp">
 
             <label for="category">Categoría:</label>
             <input type="text" id="category" name="category" required>
@@ -61,6 +62,13 @@
 
             <button type="submit" class="botones_editar_producto">Agregar Producto</button>
         </form>
+        <% if (errors && errors.length > 0) { %>
+          <ul class="errores_productEdit">
+              <% errors.forEach(error => { %>
+                  <li><%= error.msg %></li>
+              <% }) %>
+          </ul>
+      <% } %>      
       </div>
     </main>
     <footer><%- include("../partials/footer") %></footer>
