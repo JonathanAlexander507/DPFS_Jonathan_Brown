@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/stylesheets/profile_style.css" />
+  </head>
+  <body>
+    <header><%- include("../partials/header") %></header>
+    <main class="profile_main">
+      <div class="caja_padre">
+        <h1 class="titulo_profile">Perfil de Usuario</h1>
+        <div class="fotoPerfil">
+          <img
+            src="/images/users/profile_photo/<%=user.profile_image%>"
+            alt="Foto de Perfil"
+          />
+        </div>
+        <h2 class="nombre_profile"><%= user.name %> <%= user.last_name %></h2>
+        <h2 class="profile_h2"><%= user.email %></h2>
+        <h2 class="profile_h2">Tipo de Usuario: <%= user.user_type %></h2>
+        <h2 class="profile_h2">Provincia: <%= user.province %></h2>
+        <form action="/user/logout" method="get" class="form_profile">
+          <button type="submit" id="logoutButton" class="boton_profile">Cerrar Sesión</button>
+        </form>
+        <button type="button" id="deleteAccountButton" class="boton_profile">
+          Eliminar mi cuenta
+        </button>
+      </div>
+    </main>
+    <footer><%- include("../partials/footer") %></footer>
+    <script src="/javascripts/home.js"></script>
+    <script src="/javascripts/profile.js"></script>
+  </body>
+</html>

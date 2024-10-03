@@ -1,7 +1,8 @@
 let cart = {
-    cart: (req, res) => {
+    showCart: (req, res) => {
         return res.render("cart/productCart",{
-            title: "Carrito de compras"
+            title: "Carrito de compras",
+            user: req.session.user
         })
     },
     

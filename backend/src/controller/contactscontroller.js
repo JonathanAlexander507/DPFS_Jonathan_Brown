@@ -1,7 +1,8 @@
 let contacto = {
     contacto: (req, res) => {
         return res.render("contact",{
-            title: "Contactanos"
+            title: "Contactanos",
+            user: req.session.user
         })
     },
     

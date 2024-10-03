@@ -5,17 +5,17 @@
     margin-top: 30px;
     gap: 15px;
 }
-.div_inputs_login {
+.div_inputs_login  {
     width: 90%;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .div_inputs_login i {
     color: rgb(0, 200, 255);
     text-shadow: 0 0 5px rgb(170, 0, 255);
     font-size: 35px;
-    margin-right: 10px;
+    margin-bottom: 10px;
 }
 #errorEmail, #errorPassword {
     color: red;
@@ -25,9 +25,15 @@
 #errorEmail i, #errorPassword i{
     font-size: 20px;
 }
+#cart_error {
+    background-color: transparent;
+    color: red;
+    border: none;
+}
 #show_icon {
-    width: 0%;
-    transform: translateX(-70px);
+    position: absolute;
+    top: 310px;
+    right: 200px;
     cursor: pointer;
 }
 .label_enlaces {
@@ -35,8 +41,8 @@
 }
 @media screen and (max-width: 575.98px) {
     #show_icon {
-        transform: translateX(-25px);
-        font-size: 20px;
+        top: 298px;
+    right: 80px;
     }
     .div_inputs {
         align-items: center;

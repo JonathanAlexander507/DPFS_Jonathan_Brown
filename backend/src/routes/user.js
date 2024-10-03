@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/profile_photo')
+const upload = require('../middleware/profile_photo');
 const { check } = require('express-validator');
 const userController = require('../controller/usercontroller');
 
@@ -19,12 +19,19 @@ const registerValidations = [
         }
         return true;
     }),
-    check('province').notEmpty().withMessage('Debe seleccionar una provincia.')
+    check('province').notEmpty().withMessage('Debe seleccionar una provincia.'),
+    check('email').notEmpty().withMessage('El correo electrónico es obligatorio.')
 ];
 
 // Rutas
 router.get('/register', userController.registro);
 router.post('/register', upload.single('profile_image'), registerValidations, userController.processRegister);
 router.get('/login', userController.login);
+router.post('/login', [check('email').notEmpty(), check('password').notEmpty()], userController.processLogin);
+router.get('/profile', userController.profile); 
+router.delete('/delete', userController.deleteAccount); 
+router.get('/logout', userController.logout);
+
+
 
 module.exports = router;

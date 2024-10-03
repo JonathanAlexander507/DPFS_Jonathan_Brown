@@ -1,0 +1,50 @@
+.profile_main {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.titulo_profile {
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 5px rgb(150, 0, 250);
+}
+.fotoPerfil {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    border: 3px solid rgb(150, 0, 250);
+    border-radius: 200px;
+}
+.fotoPerfil img {
+    width: 100%;
+}
+.nombre_profile {
+    margin-top: 10px;
+    color: rgb(0, 200, 255);
+    text-shadow: 0 0 5px rgb(150, 0, 250);
+}
+.profile_h2 {
+    margin-top: 10px;
+    color: white;
+    text-shadow: 0 0 5px rgb(150, 0, 250);
+}
+.profile_main form{
+    width: 100%;
+}
+.boton_profile {
+    width: 50%;
+    border-radius: 20px;
+    font-size: 25px;
+    padding: 10px 10px;
+    margin: 5px 0;
+    background-color: transparent;
+    border: solid 1.5px rgb(0, 200, 255);
+    color: white;
+    text-shadow: 0 0 5px rgb(150, 0, 250);
+    transition: all 0.5s ease-out;
+}
+.boton_profile:hover {
+    color: rgb(0, 200, 255);
+    box-shadow: 0 0 20px rgb(127, 110, 138);
+    border: solid 1.5px rgb(150, 0, 250);
+}

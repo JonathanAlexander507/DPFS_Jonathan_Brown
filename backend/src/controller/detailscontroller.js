@@ -8,7 +8,8 @@ let details = {
         let product = productos.find(p => p.id == productId);
         return res.render("products/productEdit", {
             title: "Editar o Agregar Producto",
-            product: product
+            product: product,
+            user: req.session.user
         });
     },
 
@@ -23,7 +24,8 @@ let details = {
 
         return res.render("products/productDetail", {
             title: "Detalle de producto",
-            product: product
+            product: product,
+            user: req.session.user
         });
     },
 
@@ -97,7 +99,8 @@ let details = {
     // Cargar la página de agregar productos
     load: (req, res) => {
         return res.render("products/productLoad", {
-            title: "Agregar Productos"
+            title: "Agregar Productos",
+            user: req.session.user
         });
     },
 
@@ -105,7 +108,8 @@ let details = {
     list: (req, res) => {
         return res.render("products/productList", {
             title: "Lista de Productos",
-            productos: productos // Pasar todos los productos a la vista
+            productos: productos, // Pasar todos los productos a la vista
+            user: req.session.user
         });
     }
 };

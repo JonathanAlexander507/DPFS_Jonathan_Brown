@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include("../partials/head")%>
+    <%- include("../partials/head") %>
   </head>
   <body>
-    <header><%- include("../partials/header")%></header>
+    <header><%- include("../partials/header") %></header>
     <main class="registro_main">
       <div class="caja_padre">
         <h1 class="titulo_main">Bienvenido Gamer</h1>
         <h2 class="subtitulo_main_registro">Inicia sesión para que puedas comprar</h2>
-        <form
-          action=" /stats "
-          enctype=" multipart/form-data "
-          method=" post "
-          class="registro_form"
-          id="formulario_login"
-        >
+        <form action="/user/login" method="POST" class="login_form" id="formulario_login">
           <div class="div_inputs_login" id="div_input_email">
-            <i class="bx bx-envelope" id="email_icon"></i>
-            <input
-              type="email"
-              placeholder="Ingrese su email"
-              class="inputs"
-              required
-              id="email_login"
-            />
+              <i class="bx bx-envelope" id="email_icon"></i>
+              <input 
+                  type="email" 
+                  placeholder="Ingrese su email" 
+                  class="inputs" 
+                  required 
+                  id="email_login" 
+                  name="email" 
+                  value="<%= oldData ? oldData.email : '' %>" />
+              <!-- Mostrar error de correo -->
+              <span id="errorEmail" class="error">
+                  <% if (errors) { %>
+                      <% errors.forEach(function(error) { %>
+                          <% if (error.param === 'email') { %>
+                              <li><%= error.msg %></li>
+                          <% } %>
+                      <% }) %>
+                  <% } %>
+              </span>
           </div>
-          <span id="errorEmail"></span>
+      
           <div class="div_inputs_login" id="div_input_pass">
-            <i class="bx bx-lock" id="pass_icon"></i>
-            <input
-              type="password"
-              placeholder="Ingrese su contraseña"
-              class="inputs"
-              required
-              id="password_login"
-            />
-            <i class='bx bx-show' id="show_icon"></i>
+              <i class="bx bx-lock" id="pass_icon"></i>
+              <input 
+                  type="password" 
+                  placeholder="Ingrese su contraseña" 
+                  class="inputs" 
+                  required 
+                  id="password_login" 
+                  name="password" />
+              <!-- Mostrar error de contraseña -->
+              <span id="errorPassword" class="error">
+                  <% if (errors) { %>
+                      <% errors.forEach(function(error) { %>
+                          <% if (error.param === 'password') { %>
+                              <li><%= error.msg %></li>
+                          <% } %>
+                      <% }) %>
+                  <% } %>
+              </span>
+              <i class='bx bx-show' id="show_icon"></i>
           </div>
-          <span id="errorPassword"></span>
-          <label class="label_enlaces">¿No tienes una cuenta? <a href="/user/register">Registrate</a></label>
+          <% if (error_msg.length > 0) { %>
+            <div class="alert alert-danger" id="cart_error"><%= error_msg %></div>
+        <% } %>
+      
+          <label class="label_enlaces">
+              ¿No tienes una cuenta? <a href="/user/register">Registrate</a>
+          </label>
           <button type="submit" class="boton_enviar" id="boton_enviar_login">Entrar</button>
-        </form>
-        
+      </form>
       </div>
     </main>
-    <footer><%- include("../partials/footer")%></footer>
+    <footer><%- include("../partials/footer") %></footer>
     <script src="/javascripts/home.js"></script>
-    <script src="/javascripts/validacion_login.js"></script>
+    <script src="/javascripts/loginVal.js"></script>
   </body>
 </html>

@@ -1,41 +1,54 @@
 <header id="header">
-    <div class="logo">
-      <a href="/" title="Home"><img src="/images/logo.png" alt="Logo" /></a>
+  <div class="logo">
+    <a href="/" title="Home"><img src="/images/logo.png" alt="Logo" /></a>
+  </div>
+  <form class="form_busqueda" id="buscador">
+    <div class="barra_busqueda">
+      <input type="text" placeholder="¿Que Producto desea buscar?" />
+      <button id="lupa" type="submit" title="Buscar">
+        <i class="bx bx-search"></i>
+      </button>
     </div>
-    <form class="form_busqueda" id="buscador">
-      <div class="barra_busqueda">
-        <input type="text" placeholder="¿Que Producto desea buscar?" />
-        <button id="lupa" type="submit" title="Buscar">
-          <i class="bx bx-search"></i>
-        </button>
-      </div>
-    </form>
-    <button class="boton_abrir" id="abrir"><i class='bx bx-menu'></i></button>
-    <nav class="nav-bar" id="nav-bar">
-      <button class="boton_cerrar" id="cerrar"><i class='bx bx-x'></i></button>
-      <ul class="listas_navbar" >
+  </form>
+  <button class="boton_abrir" id="abrir"><i class='bx bx-menu'></i></button>
+  <nav class="nav-bar" id="nav-bar">
+    <button class="boton_cerrar" id="cerrar"><i class='bx bx-x'></i></button>
+    <ul class="listas_navbar" >
+      <li>
+        <a href="/" title="Home"><i class="bx bx-home"></i></a>
+      </li>
+      <li>
+        <a href="/cart/productCart" title="Tu carrito"><i class="bx bx-cart-add"></i></a>
+      </li>
+
+      <!-- Validar si el usuario está logueado -->
+      <% if (user) { %>
         <li>
-          <a href="/" title="Home"><i class="bx bx-home"></i></a>
+          <a href="/user/profile" title="Perfil"><i class="bx bx-user-circle"></i></a>
         </li>
+
+        <!-- Mostrar iconos adicionales solo si es administrador -->
+        <% if (user.user_type === 'administrador') { %>
+          <li>
+            <a href="/products/productList" title="Listado de productos"><i class='bx bx-list-ol'></i></a>
+          </li>
+          <li>
+            <a href="/products/productLoad" title="Añadir un producto"><i class='bx bx-add-to-queue'></i></a>
+          </li>
+        <% } %>
+
         <li>
-          <a href="/cart/productCart" title="Tu carrito"><i class="bx bx-cart-add"></i></a>
+          <a href="/user/logout" title="Cerrar sesión"><i class="bx bx-log-out"></i></a>
         </li>
+      <% } else { %>
         <li>
-          <a href="/user/login" title="Iniciar Sesión"
-            ><i class="bx bx-user-circle"></i
-          ></a>
+          <a href="/user/login" title="Iniciar Sesión"><i class="bx bx-user-circle"></i></a>
         </li>
-        <li>
-          <a href="/products/productList" title="Listado de productos"
-            ><i class='bx bx-list-ol'></i></a>
-        </li>
-        <li>
-          <a href="/products/productLoad" title="añadir un producto"
-            ><i class='bx bx-add-to-queue'></i></a>
-        </li>
-        <li>
-          <a href="/contact" title="Contactanos"><i class="bx bx-chat"></i></a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+      <% } %>
+      
+      <li>
+        <a href="/contact" title="Contactanos"><i class="bx bx-chat"></i></a>
+      </li>
+    </ul>
+  </nav>
+</header>
