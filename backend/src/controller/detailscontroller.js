@@ -1,72 +1,38 @@
-const fs = require('fs');
-const path = require('path');
 const { validationResult } = require('express-validator');
-let productos = require('../../database/productos.json');
-const upload = require('../middleware/multerConfig'); // Importa la configuración de multer
+const Product = require('../../database/models/Product');
+const { Op } = require('sequelize');
 
-let details = {
+const details = {
     // Mostrar la página de edición/agregar producto
-    edit: (req, res) => {
-        let productId = req.params.id;
-        let product = productos.find(p => p.id == productId);
+    edit: async (req, res) => {
+        const product = await Product.findByPk(req.params.id);
         return res.render("products/productEdit", {
-            title: "Editar o Agregar Producto",
-            product: product,
-            errors: [] // Inicializar el array de errores
+            title: product ? "Editar Producto" : "Agregar Producto",
+            product: product || {},
+            errors: []
         });
     },
 
-    save: (req, res) => {
+    save: async (req, res) => {
         const errors = validationResult(req);
-
-        // Si hay errores de validación, devolverlos a la vista
         if (!errors.isEmpty()) {
-            let productId = req.body.id;
-            let product = productos.find(p => p.id == productId);
             return res.render("products/productEdit", {
-                title: productId ? "Editar Producto" : "Agregar Producto",
-                product: req.body, // Retorna los valores ingresados para que no se pierdan
-                errors: errors.array() // Pasar los errores a la vista
+                title: req.body.id ? "Editar Producto" : "Agregar Producto",
+                product: req.body,
+                errors: errors.array()
             });
         }
-
-        let productId = req.body.id;
     
-        // Obtener las imágenes subidas de cada campo
-        const imageFiles = req.files.image ? req.files.image[0].filename : ''; // Obtener la imagen principal
+        // Obtener las imágenes subidas
+        const imageFiles = req.files.image ? req.files.image[0].filename : '';
         const image1Files = req.files.image1 ? req.files.image1[0].filename : '';
         const image2Files = req.files.image2 ? req.files.image2[0].filename : '';
         const image3Files = req.files.image3 ? req.files.image3[0].filename : '';
         const image4Files = req.files.image4 ? req.files.image4[0].filename : '';
     
-        if (productId) {
-            // Editar producto existente
-            let productIndex = productos.findIndex(p => p.id == productId);
-            if (productIndex != -1) {
-                productos[productIndex] = {
-                    id: productId,
-                    name: req.body.name,
-                    category: req.body.category,
-                    brand: req.body.brand,
-                    model: req.body.model,
-                    specs1: req.body.specs1,
-                    specs2: req.body.specs2,
-                    specs3: req.body.specs3,
-                    price: parseFloat(req.body.price),
-                    stock: parseInt(req.body.stock) || 100,
-                    description: req.body.description,
-                    description2: req.body.description2,
-                    image: imageFiles || productos[productIndex].image, // Mantener la imagen existente si no se subió una nueva
-                    image1: image1Files || productos[productIndex].image1 || '',
-                    image2: image2Files || productos[productIndex].image2 || '',
-                    image3: image3Files || productos[productIndex].image3 || '',
-                    image4: image4Files || productos[productIndex].image4 || ''
-                };
-            }
-        } else {
-            // Agregar nuevo producto
-            let newProduct = {
-                id: productos.length + 1,
+        if (req.body.id) {
+            // Editar un producto existente
+            await Product.update({
                 name: req.body.name,
                 category: req.body.category,
                 brand: req.body.brand,
@@ -74,35 +40,46 @@ let details = {
                 specs1: req.body.specs1,
                 specs2: req.body.specs2,
                 specs3: req.body.specs3,
-                price: parseFloat(req.body.price),
+                price: parseFloat(req.body.price) || 0, // Convierte el valor a número y usa 0 como valor predeterminado
                 stock: parseInt(req.body.stock) || 100,
                 description: req.body.description,
                 description2: req.body.description2,
-                image: imageFiles || '', // La imagen principal
-                image1: image1Files || '',
-                image2: image2Files || '',
-                image3: image3Files || '',
-                image4: image4Files || ''
-            };
-            productos.push(newProduct);
+                image: imageFiles || undefined,
+                image1: image1Files || undefined,
+                image2: image2Files || undefined,
+                image3: image3Files || undefined,
+                image4: image4Files || undefined
+            }, { where: { id: req.body.id } });
+        } else {
+            // Crear un nuevo producto
+            await Product.create({
+                name: req.body.name,
+                category: req.body.category,
+                brand: req.body.brand,
+                model: req.body.model,
+                specs1: req.body.specs1,
+                specs2: req.body.specs2,
+                specs3: req.body.specs3,
+                price: parseFloat(req.body.price) || 0, // Convierte el valor a número y usa 0 como valor predeterminado
+                stock: parseInt(req.body.stock) || 100,
+                description: req.body.description,
+                description2: req.body.description2,
+                image: imageFiles,
+                image1: image1Files,
+                image2: image2Files,
+                image3: image3Files,
+                image4: image4Files
+            });
         }
     
-        // Guardar cambios en el archivo JSON
-        fs.writeFileSync('./database/productos.json', JSON.stringify(productos, null, 2));
-        return res.redirect('/'); // Redirigir a la página principal
+        return res.redirect('/products/productList'); // Redirige a la lista de productos
     },
 
-    // Eliminar producto
-    delete: (req, res) => {
-        let productId = req.params.id;
-        productos = productos.filter(p => p.id != productId);
-
-        // Guardar cambios en el archivo JSON
-        fs.writeFileSync('./database/productos.json', JSON.stringify(productos, null, 2));
+    delete: async (req, res) => {
+        await Product.destroy({ where: { id: req.params.id } });
         return res.redirect('/');
     },
 
-    // Cargar la página de agregar productos
     load: (req, res) => {
         return res.render("products/productLoad", {
             title: "Agregar Productos",
@@ -110,20 +87,31 @@ let details = {
         });
     },
 
+
     // Mostrar lista de todos los productos
-    list: (req, res) => {
+list: async (req, res) => {
+    try {
+        const productos = await Product.findAll();
+        
+        // Convertir el precio a número para cada producto
+        productos.forEach(product => {
+            product.price = parseFloat(product.price); // Asegúrate de que price sea un número
+        });
+        
+        console.log("Productos recuperados:", productos);
         return res.render("products/productList", {
             title: "Lista de Productos",
-            productos: productos // Pasar todos los productos a la vista
+            productos: productos
         });
-    },
+    } catch (error) {
+        console.error("Error al recuperar productos:", error);
+        return res.status(500).send("Error al recuperar productos");
+    }
+},
 
     // Mostrar detalles de un producto
-    details: (req, res) => {
-        let productId = req.params.id;
-        let product = productos.find(p => p.id == productId);
-
-        // Verifica si el producto existe
+    details: async (req, res) => {
+        const product = await Product.findByPk(req.params.id);
         if (!product) {
             return res.status(404).send("Producto no encontrado");
         }
@@ -133,6 +121,73 @@ let details = {
             product: product
         });
     },
+    // Mostrar productos por categoría
+    showByCategory: async (req, res) => {
+        const { category } = req.params; // Obtiene la categoría desde la URL
+    
+        try {
+            const productos = await Product.findAll({ where: { category } });
+    
+            if (productos.length === 0) {
+                return res.status(404).send('No se encontraron productos en esta categoría.');
+            }
+    
+            return res.render('products/category', {
+                title: `Productos de la categoría: ${category}`,
+                productos: productos
+            });
+        } catch (error) {
+            console.error("Error al recuperar productos por categoría:", error);
+            return res.status(500).send("Error al recuperar productos");
+        }
+    },
+    searchSuggestions: async (req, res) => {
+        const query = req.query.query.toLowerCase();
+        
+        try {
+            const suggestions = await Product.findAll({
+                where: {
+                    name: {
+                        [Op.like]: `%${query}%` // Busca coincidencias en el nombre del producto
+                    }
+                },
+                limit: 5 // Limita a las primeras 5 sugerencias
+            });
+    
+            return res.json(suggestions); // Envía las sugerencias como respuesta JSON
+        } catch (error) {
+            console.error("Error al obtener sugerencias:", error);
+            return res.status(500).send("Error al obtener sugerencias");
+        }
+    },
+    searchResults: async (req, res) => {
+        const query = req.query.query; // Obtén la consulta de búsqueda
+    
+        // Busca productos que coincidan con la consulta
+        const products = await Product.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${query}%` // Usa LIKE para buscar productos que coincidan
+                }
+            }
+        });
+    
+        if (products.length === 0) {
+            // Si no se encuentran productos, muestra un mensaje
+            return res.render('products/searchResults', {
+                title: 'Resultados de búsqueda',
+                message: 'No se encontraron productos disponibles.',
+                products: [] // Pasa un arreglo vacío
+            });
+        }
+    
+        // Renderiza la vista con los productos encontrados
+        return res.render('products/searchResults', {
+            title: 'Resultados de búsqueda',
+            products // Pasa los productos encontrados
+        });
+    }
+        
 };
 
 module.exports = details;

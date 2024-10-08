@@ -11,6 +11,12 @@ const userRouter = require('./src/routes/user')
 const cartRouter = require('./src/routes/cart')
 const detailsRouter = require('./src/routes/details')
 const flash = require('connect-flash');
+const userApiRoutes = require('./src/api/userApi');
+const productApiRoutes = require('./src/api/productApi');
+const productApi = require('./src/api/productApi');
+const userApi = require('./src/api/userApi');
+const PORT = process.env.PORT || 5000; // Cambiar el puerto a 5000
+
 
 var app = express();
 
@@ -25,6 +31,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/api', userApiRoutes);  // Prefijo para todas las APIs de usuarios
+app.use('/api', productApiRoutes);  // Prefijo para todas las APIs de productos
+app.use('/api', productApi);
+app.use('/api', userApi);
 
 app.use(session({
   secret: 'tu_secreto',  // Debes usar un secreto fuerte aquí

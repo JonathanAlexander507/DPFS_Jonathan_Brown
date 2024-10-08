@@ -25,7 +25,8 @@
                         <td class="listado_td"><%= product.id %></td>
                         <td class="listado_td"><%= product.name %></td>
                         <td class="listado_td"><%= product.category %></td>
-                        <td class="listado_td">$ <%= (product.price ? product.price.toFixed(2) : '0.00') %></td>
+                        <td class="listado_td">$ <%= (typeof product.price === 'number' ? product.price.toFixed(2) : '0.00') %></td>
+                        <% console.log("Tipo de precio:", typeof product.price); %>
                         <td class="listado_td"><%= product.stock %></td>
                         <td class="listado_td">
                             <a href="/products/productEdit/<%= product.id %>">

@@ -1,0 +1,9 @@
+.error_busqueda_texto {
+    color: red;
+    font-size: 30px;
+    margin-top: 200px;
+    text-align: center;
+}
+.tarjetas_grupo {
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+}

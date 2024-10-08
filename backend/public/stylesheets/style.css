@@ -75,7 +75,25 @@ transition: all 0.5s ease-in-out;
   color: blueviolet;
   text-shadow: 0 0 5px rgb(31, 22, 40);
 }
-/*main*/
+.suggestions-box {
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+/*------------------------main------------------------*/
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url(./../images/background_image.jpg!w700wp);
@@ -211,7 +229,7 @@ body {
   box-shadow: 0 0 20px rgb(127, 110, 138);
   border: solid 1.5px rgb(150, 0, 250);
 }
-/*footer*/
+/*------------------------footer------------------------*/
 .Footer {
   background-color: rgba(0, 0, 0, 0.3);
   margin-top: 20px;

@@ -3,6 +3,7 @@ const router = express.Router();
 const upload = require('../middleware/profile_photo');
 const { check } = require('express-validator');
 const userController = require('../controller/usercontroller');
+const userApi = require('../api/userApi');
 
 // Validaciones
 const registerValidations = [
@@ -31,7 +32,8 @@ router.post('/login', [check('email').notEmpty(), check('password').notEmpty()],
 router.get('/profile', userController.profile); 
 router.delete('/delete', userController.deleteAccount); 
 router.get('/logout', userController.logout);
-
+// Rutas para API de usuarios
+router.use('/api', userApi);
 
 
 module.exports = router;

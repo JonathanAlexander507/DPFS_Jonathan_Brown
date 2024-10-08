@@ -2,14 +2,14 @@
   <div class="logo">
     <a href="/" title="Home"><img src="/images/logo.png" alt="Logo" /></a>
   </div>
-  <form class="form_busqueda" id="buscador">
+  <form class="form_busqueda" id="buscador" action="/products/search" method="GET">
     <div class="barra_busqueda">
-      <input type="text" placeholder="¿Que Producto desea buscar?" />
-      <button id="lupa" type="submit" title="Buscar">
-        <i class="bx bx-search"></i>
-      </button>
+        <input type="text" name="query" placeholder="¿Qué producto desea buscar?" />
+        <button id="lupa" type="submit" title="Buscar">
+            <i class="bx bx-search"></i>
+        </button>
     </div>
-  </form>
+</form>
   <button class="boton_abrir" id="abrir"><i class='bx bx-menu'></i></button>
   <nav class="nav-bar" id="nav-bar">
     <button class="boton_cerrar" id="cerrar"><i class='bx bx-x'></i></button>
