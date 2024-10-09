@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const User = require('../../database/models/user');
-
 const user = {
     // Renderiza la vista del formulario de registro
     registro: (req, res) => {
@@ -141,28 +140,21 @@ const user = {
         req.session.destroy();
         res.status(200).json({ message: "Cuenta eliminada exitosamente" });
     },
-
-    // API endpoints
     getAllUsers: async (req, res) => {
         try {
-            const users = await User.findAll();
-            res.json(users); // Devuelve todos los usuarios en formato JSON
+            const users = await User.findAll({
+                attributes: ['user_id', 'name', 'email'] // Selecciona los campos que necesitas
+            });
+            return res.json({
+                count: users.length,
+                users: users // Devuelve un objeto con la cantidad y el array de usuarios
+            });
         } catch (error) {
-            res.status(500).json({ error: 'Error al obtener los usuarios' });
-        }
-    },
-
-    getUserById: async (req, res) => {
-        try {
-            const user = await User.findByPk(req.params.id);
-            if (!user) {
-                return res.status(404).json({ error: 'Usuario no encontrado' });
-            }
-            res.json(user);
-        } catch (error) {
-            res.status(500).json({ error: 'Error al obtener el usuario' });
+            console.error("Error al obtener usuarios:", error);
+            res.status(500).json({ message: "Error al obtener usuarios" });
         }
     }
 };
+
 
 module.exports = user;

@@ -11,19 +11,14 @@ const userRouter = require('./src/routes/user')
 const cartRouter = require('./src/routes/cart')
 const detailsRouter = require('./src/routes/details')
 const flash = require('connect-flash');
-const userApiRoutes = require('./src/api/userApi');
-const productApiRoutes = require('./src/api/productApi');
-const productApi = require('./src/api/productApi');
-const userApi = require('./src/api/userApi');
-const PORT = process.env.PORT || 5000; // Cambiar el puerto a 5000
-
+const cors = require('cors'); // Importa el middleware cors
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, './src/views'));
 app.set('view engine', 'ejs');
-
+app.use(cors()); // Esto permitirá todas las solicitudes de cualquier origen
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,10 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/api', userApiRoutes);  // Prefijo para todas las APIs de usuarios
-app.use('/api', productApiRoutes);  // Prefijo para todas las APIs de productos
-app.use('/api', productApi);
-app.use('/api', userApi);
+
 
 app.use(session({
   secret: 'tu_secreto',  // Debes usar un secreto fuerte aquí
@@ -69,7 +61,6 @@ app.use('/user', userRouter);
 app.use('/', detailsRouter);
 app.use('/database', express.static(path.join(__dirname, 'database')));
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 // catch 404 and forward to error handler

@@ -3,11 +3,14 @@ var router = express.Router();
 let detailsController = require('../controller/detailscontroller'); // Asegúrate de que esta ruta sea correcta
 const upload = require('../middleware/multerConfig'); // Importa la configuración de multer
 const { check, validationResult } = require('express-validator');
-const productApi = require('../api/productApi');
+const Product = require('../../database/models/Product');
 
 
 // Ruta para mostrar la lista de productos
 router.get('/products/productList', detailsController.list); // Esta línea debe estar presente
+
+// Ruta para devolver los productos como JSON para la API
+router.get('/products', detailsController.listJson);
 
 // Ruta para editar un producto por ID
 router.get('/products/productEdit/:id?', detailsController.edit);
@@ -47,6 +50,6 @@ router.get('/search-suggestions', detailsController.searchSuggestions);
 // Ruta para buscar productos
 router.get('/products/search', detailsController.searchResults);
 
-router.use(productApi);
+router.get('/products', detailsController.getAllProducts);
 
 module.exports = router;

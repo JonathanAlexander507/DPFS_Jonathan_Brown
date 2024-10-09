@@ -186,7 +186,38 @@ list: async (req, res) => {
             title: 'Resultados de búsqueda',
             products // Pasa los productos encontrados
         });
+    },
+    getAllProducts : async (req, res) => {
+    try {
+      const products = await Product.find(); // O el método que uses para obtener los productos
+      res.json({
+        count: products.length,
+        products,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Error fetching products' });
     }
+},
+listJson: async (req, res) => {
+    try {
+        const productos = await Product.findAll();
+        
+        productos.forEach(product => {
+            product.price = parseFloat(product.price); // Asegurarse de que el precio sea un número
+        });
+
+        // Devolver los productos en formato JSON para la API
+        return res.json({
+            count: productos.length,
+            products: productos
+        });
+    } catch (error) {
+        console.error("Error al recuperar productos:", error);
+        return res.status(500).json({ message: "Error al recuperar productos" });
+    }
+}
+
         
 };
 
