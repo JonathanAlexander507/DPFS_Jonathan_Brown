@@ -87,27 +87,26 @@ const details = {
         });
     },
 
-
     // Mostrar lista de todos los productos
-list: async (req, res) => {
-    try {
-        const productos = await Product.findAll();
-        
-        // Convertir el precio a número para cada producto
-        productos.forEach(product => {
-            product.price = parseFloat(product.price); // Asegúrate de que price sea un número
-        });
-        
-        console.log("Productos recuperados:", productos);
-        return res.render("products/productList", {
-            title: "Lista de Productos",
-            productos: productos
-        });
-    } catch (error) {
-        console.error("Error al recuperar productos:", error);
-        return res.status(500).send("Error al recuperar productos");
-    }
-},
+    list: async (req, res) => {
+        try {
+            const productos = await Product.findAll();
+            
+            // Convertir el precio a número para cada producto
+            productos.forEach(product => {
+                product.price = parseFloat(product.price); // Asegúrate de que price sea un número
+            });
+            
+            console.log("Productos recuperados:", productos);
+            return res.render("products/productList", {
+                title: "Lista de Productos",
+                productos: productos
+            });
+        } catch (error) {
+            console.error("Error al recuperar productos:", error);
+            return res.status(500).send("Error al recuperar productos");
+        }
+    },
 
     // Mostrar detalles de un producto
     details: async (req, res) => {
@@ -121,6 +120,7 @@ list: async (req, res) => {
             product: product
         });
     },
+
     // Mostrar productos por categoría
     showByCategory: async (req, res) => {
         const { category } = req.params; // Obtiene la categoría desde la URL
@@ -141,6 +141,7 @@ list: async (req, res) => {
             return res.status(500).send("Error al recuperar productos");
         }
     },
+
     searchSuggestions: async (req, res) => {
         const query = req.query.query.toLowerCase();
         
@@ -160,6 +161,7 @@ list: async (req, res) => {
             return res.status(500).send("Error al obtener sugerencias");
         }
     },
+
     searchResults: async (req, res) => {
         const query = req.query.query; // Obtén la consulta de búsqueda
     
@@ -187,38 +189,47 @@ list: async (req, res) => {
             products // Pasa los productos encontrados
         });
     },
-    getAllProducts : async (req, res) => {
-    try {
-      const products = await Product.find(); // O el método que uses para obtener los productos
-      res.json({
-        count: products.length,
-        products,
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error fetching products' });
-    }
-},
-listJson: async (req, res) => {
-    try {
-        const productos = await Product.findAll();
-        
-        productos.forEach(product => {
-            product.price = parseFloat(product.price); // Asegurarse de que el precio sea un número
-        });
 
-        // Devolver los productos en formato JSON para la API
-        return res.json({
-            count: productos.length,
-            products: productos
-        });
-    } catch (error) {
-        console.error("Error al recuperar productos:", error);
-        return res.status(500).json({ message: "Error al recuperar productos" });
-    }
-}
+    listJson: async (req, res) => {
+        try {
+            const productos = await Product.findAll();
+            
+            productos.forEach(product => {
+                product.price = parseFloat(product.price); // Asegurarse de que el precio sea un número
+            });
 
-        
+            // Devolver los productos en formato JSON para la API
+            return res.json({
+                count: productos.length,
+                products: productos
+            });
+        } catch (error) {
+            console.error("Error al recuperar productos:", error);
+            return res.status(500).json({ message: "Error al recuperar productos" });
+        }
+    },
+
+    getProductCounts: async (req, res) => {
+        try {
+            const products = await Product.findAll(); // Obtener todos los productos
+            const count = products.length; // Contar el total de productos
+            
+            // Contar productos por categoría
+            const countByCategory = products.reduce((acc, product) => {
+                acc[product.category] = (acc[product.category] || 0) + 1; // Incrementar el conteo
+                return acc;
+            }, {});
+
+            // Devolver la respuesta en formato JSON
+            return res.json({
+                count,
+                countByCategory
+            });
+        } catch (error) {
+            console.error("Error al obtener los conteos de productos:", error);
+            return res.status(500).json({ message: "Error al obtener los conteos de productos" });
+        }
+    }
 };
 
 module.exports = details;

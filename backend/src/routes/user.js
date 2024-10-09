@@ -25,6 +25,7 @@ const registerValidations = [
 ];
 
 // Rutas
+// Rutas
 router.get('/register', userController.registro);
 router.post('/register', upload.single('profile_image'), registerValidations, userController.processRegister);
 router.get('/login', userController.login);
@@ -34,5 +35,9 @@ router.delete('/delete', userController.deleteAccount);
 router.get('/logout', userController.logout);
 
 router.get('/users', userController.getAllUsers);
+router.get('/users/:id', userController.getUserById); // Nueva ruta para obtener un usuario por ID
+
+module.exports = router;
+
 
 module.exports = router;

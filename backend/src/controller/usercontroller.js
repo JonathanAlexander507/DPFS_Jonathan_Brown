@@ -153,7 +153,34 @@ const user = {
             console.error("Error al obtener usuarios:", error);
             res.status(500).json({ message: "Error al obtener usuarios" });
         }
+    },
+    getUserById: async (req, res) => {
+        try {
+            const userId = req.params.id; // Obtener el ID desde los parámetros de la URL
+            const user = await User.findByPk(userId, {
+                attributes: ['user_id', 'name', 'last_name', 'email', 'profile_image'], // Selecciona los campos que necesitas
+            });
+    
+            if (!user) {
+                return res.status(404).json({ message: "Usuario no encontrado" });
+            }
+    
+            // Construir la URL de la imagen
+            const imageUrl = user.profile_image ? `public/images/users/profile_photo/${user.profile_image}` : null;
+    
+            return res.json({
+                user_id: user.user_id,
+                name: user.name,
+                last_name: user.last_name,
+                email: user.email,
+                profile_image: imageUrl, // Devuelve la URL de la imagen
+            });
+        } catch (error) {
+            console.error("Error al obtener usuario:", error);
+            res.status(500).json({ message: "Error al obtener usuario" });
+        }
     }
+    
 };
 
 

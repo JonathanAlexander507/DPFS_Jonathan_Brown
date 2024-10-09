@@ -50,6 +50,11 @@ router.get('/search-suggestions', detailsController.searchSuggestions);
 // Ruta para buscar productos
 router.get('/products/search', detailsController.searchResults);
 
-router.get('/products', detailsController.getAllProducts);
+
+// Ruta para devolver el conteo de productos y conteos por categoría
+router.get('/products/counts', detailsController.getProductCounts); // Nueva ruta
+
+
+
 
 module.exports = router;
