@@ -2,15 +2,13 @@
 <html lang="en">
   <head>
     <%- include("../partials/head")%>
-    <link rel="stylesheet" href="/stylesheets/cart_style.css" />
   </head>
   <body>
     <header><%- include("../partials/header")%></header>
     <main class="cart_main">
-        <h1><%= title %></h1>
         <ul class="lista_carrito">
             <% let total = 0; %>
-            <% let tax = 0.07; %> <!-- 7% de impuesto itbms -->
+            <% let tax = 0.07; %> <!-- 7% de impuesto -->
             <% cartItems.forEach(item => { %>
                 <% const subtotal = item.Product.price ? (item.Product.price * item.quantity) : 0; %>
                 <% total += subtotal; %>

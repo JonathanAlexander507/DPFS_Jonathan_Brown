@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const User = sequelize.define('User', {
+const User = sequelize.define('user', {
     user_id: {
         type: DataTypes.BIGINT,  // Cambia a BIGINT para admitir números grandes
         autoIncrement: true,      // Asegúrate de que esté configurado para autoincrementar
@@ -33,7 +33,10 @@ const User = sequelize.define('User', {
     password: {
         type: DataTypes.STRING(255),
         allowNull: false
-    }
-});
+    } 
+},{
+        tableName: 'users', // Asegúrate de que coincida con el nombre de la tabla en tu base de datos
+        timestamps: true // Asegúrate de que esto esté establecido en true para incluir createdAt y updatedAt
+    });
 
 module.exports = User;

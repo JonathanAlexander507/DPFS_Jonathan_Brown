@@ -20,11 +20,12 @@
                     <span class="nombre_producto"><a href="/products/productDetail/<%= product.id %>"><%= product.name %></a></span>
                     <p class="descripcion_producto"><%= product.description %></p>
                     <div class="div_precio"><span class="precio_texto">precio:</span><span class="precio_producto">$ <%= product.price ? parseFloat(product.price).toFixed(2) : '0.00' %></span></div>
-                    <div>
+                    <form action="/cart/addToCart" method="POST" class="form_añadirCarrito">
+                        <input type="hidden" name="product_id" value="<%= product.id %>">
                         <button class="boton_añadir" type="submit">
                             Añadir al carrito
                         </button>
-                    </div>
+                    </form>
                 </article>
             <% }) %>
     <% } %>

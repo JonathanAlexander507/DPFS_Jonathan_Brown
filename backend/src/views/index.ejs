@@ -4,8 +4,8 @@
   <body>
     <header><%- include("partials/header")%></header>
     <main>
-      <h1 class="titulo_main">Bienvenido Jugador</h1>
-      <h3 class="subtitulo_main">A la tienda online mas gaming de panamá</h3>
+      <h1 class="titulo_main">Bienvenido Gamer</h1>
+      <h3 class="subtitulo_main">A la mejor tienda online gaming de panamá</h3>
       <section class="contenedor_sliderPadre">
         <div class="contenedor_sliderHijo">
           <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -130,11 +130,10 @@
             <%=product.description %>
           </p>
           <div class="div_precio"><span class="precio_texto">precio:</span><span class="precio_producto"><%=product.price%>$</span></div>
-          <div>
-            <button class="boton_añadir" type="submit">
-              Añadir al carrito
-            </button>
-          </div>
+            <form action="/cart/addToCart" method="POST" class="form_añadirCarrito"> <!-- Añadido formulario -->
+              <input type="hidden" name="product_id" value="<%= product.id %>"> <!-- ID del producto -->
+              <button class="boton_añadir" type="submit">Añadir al carrito</button>
+          </form>
         </article>
       <% }) %>
       </section>

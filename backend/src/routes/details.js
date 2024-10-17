@@ -4,6 +4,8 @@ let detailsController = require('../controller/detailscontroller'); // Asegúrat
 const upload = require('../middleware/multerConfig'); // Importa la configuración de multer
 const { check, validationResult } = require('express-validator');
 const Product = require('../../database/models/Product');
+const isLoggedIn = require('../middleware/isLoggedIn');
+const cartController = require('../controller/cartcontroller');
 
 
 // Ruta para mostrar la lista de productos
@@ -54,7 +56,7 @@ router.get('/products/search', detailsController.searchResults);
 // Ruta para devolver el conteo de productos y conteos por categoría
 router.get('/products/counts', detailsController.getProductCounts); // Nueva ruta
 
-
+router.post('/cart/addToCart', isLoggedIn, cartController.addToCart);
 
 
 module.exports = router;

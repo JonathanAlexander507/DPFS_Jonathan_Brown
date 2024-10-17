@@ -24,11 +24,12 @@
                     <span class="precio_texto">Precio:</span>
                     <span class="precio_producto">$ <%= (parseFloat(product.price) ? parseFloat(product.price).toFixed(2) : '0.00') %></span>
                 </div>
-                <div>
+                <form action="/cart/addToCart" method="POST" class="form_añadirCarrito">
+                    <input type="hidden" name="product_id" value="<%= product.id %>">
                     <button class="boton_añadir" type="submit">
                         Añadir al carrito
                     </button>
-                </div>
+                </form>
             </article>
         <% }); %>
         </section>

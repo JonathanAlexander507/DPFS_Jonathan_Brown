@@ -37,7 +37,20 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
+// Relacionar modelos
+const User = require('./user');
+const Product = require('./Product');
+const Cart = require('./Cart');
+
+// Relaciones entre modelos
+User.hasMany(Cart, { foreignKey: 'user_id' });
+Cart.belongsTo(User, { foreignKey: 'user_id' });
+
+Product.hasMany(Cart, { foreignKey: 'product_id' });
+Cart.belongsTo(Product, { foreignKey: 'product_id' });
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+

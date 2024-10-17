@@ -38,7 +38,9 @@ nav ul li a i{
   transition: all 0.5s ease-out;
 }
 nav ul li a i:hover{
-  text-shadow: 0 0 5px rgb(150, 0, 250);
+  text-shadow: 0 0 5px rgb(150, 0, 250),
+  0 0 5px rgb(150, 0, 250),
+  0 0 5px rgb(150, 0, 250);
   color: rgb(0, 200, 255);
 }
 .form_busqueda {
@@ -72,8 +74,10 @@ transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-out;
 }
 #lupa:hover {
-  color: blueviolet;
-  text-shadow: 0 0 5px rgb(31, 22, 40);
+  color: rgb(0, 200, 255);
+  text-shadow: 0 0 5px rgb(150, 0, 250),
+  0 0 5px rgb(150, 0, 250),
+  0 0 5px rgb(150, 0, 250);
 }
 .suggestions-box {
   border: 1px solid #ccc;
@@ -212,6 +216,9 @@ body {
   color: rgb(174, 68, 245);
   border-bottom: 1.5px solid rgb(0, 200, 255);
   text-shadow: 0 0 5px rgb(98, 108, 112);
+}
+.form_añadirCarrito {
+  width: 100%;
 }
 .boton_añadir {
   border-radius: 20px;

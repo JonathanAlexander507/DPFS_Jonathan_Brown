@@ -1,0 +1,22 @@
+[
+  {
+    "user_id": 1727937091224,
+    "name": "Johncito",
+    "last_name": "Konami",
+    "profile_image": "1727937091104.jpg",
+    "email": "otrogmail@gmail.com",
+    "province": "San Blas",
+    "user_type": "cliente",
+    "password": "$2b$10$zfEBry4AbRPSFB7nGp/bSOaaHLfxwps8ZJZ77LYPlLbn6XrgG8B1S"
+  },
+  {
+    "user_id": 1727943383053,
+    "name": "John",
+    "last_name": "Doe",
+    "profile_image": "1727943382823.png",
+    "email": "thepunisher@gmail.com",
+    "province": "Colón",
+    "user_type": "administrador",
+    "password": "$2b$10$XS03xT5H8ZNAsgyXXdTPa.w40RKoOSzY0po1IToozZFOdFdVfOB6y"
+  }
+]

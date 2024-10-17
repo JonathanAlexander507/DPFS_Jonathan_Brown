@@ -16,6 +16,8 @@
     border-radius: 200px;
 }
 .fotoPerfil img {
+    object-fit: cover;
+    clip-path: circle(50% at 50% 50%);
     width: 100%;
 }
 .nombre_profile {
@@ -41,10 +43,11 @@
     border: solid 1.5px rgb(0, 200, 255);
     color: white;
     text-shadow: 0 0 5px rgb(150, 0, 250);
-    transition: all 0.5s ease-out;
+    
 }
 .boton_profile:hover {
     color: rgb(0, 200, 255);
+    background-color: rgba(217, 0, 255, 0.413);
     box-shadow: 0 0 20px rgb(127, 110, 138);
     border: solid 1.5px rgb(150, 0, 250);
 }

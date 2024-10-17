@@ -110,14 +110,14 @@ const details = {
 
     // Mostrar detalles de un producto
     details: async (req, res) => {
-        const product = await Product.findByPk(req.params.id);
+        const product = await Product.findByPk(req.params.id); // Obtener el producto por ID
         if (!product) {
             return res.status(404).send("Producto no encontrado");
         }
-
+    
         return res.render("products/productDetail", {
             title: "Detalle de producto",
-            product: product
+            product: product // Pasa el producto completo a la vista
         });
     },
 
@@ -228,6 +228,42 @@ const details = {
         } catch (error) {
             console.error("Error al obtener los conteos de productos:", error);
             return res.status(500).json({ message: "Error al obtener los conteos de productos" });
+        }
+    },
+    addToCart: async (req, res) => {
+        try {
+            const { product_id, quantity } = req.body;
+    
+            // Verificar si el usuario está autenticado
+            if (!req.session.user) {
+                return res.status(403).send("Debes iniciar sesión para agregar productos al carrito");
+            }
+    
+            // Verificar si el producto ya está en el carrito
+            const existingItem = await Cart.findOne({
+                where: {
+                    user_id: req.session.user.user_id,
+                    product_id: product_id
+                }
+            });
+    
+            if (existingItem) {
+                // Si ya está, simplemente actualizamos la cantidad
+                existingItem.quantity += parseInt(quantity);
+                await existingItem.save();
+            } else {
+                // Si no está, lo agregamos al carrito
+                await Cart.create({
+                    user_id: req.session.user.user_id,
+                    product_id: product_id,
+                    quantity: quantity
+                });
+            }
+    
+            return res.redirect(`/products/productDetail/${product_id}`); // Redirigir de vuelta a la página de detalles del producto
+        } catch (error) {
+            console.error("Error al agregar al carrito:", error);
+            return res.status(500).send("Error al agregar al carrito");
         }
     }
 };

@@ -149,11 +149,11 @@
 }
 .thumbnails img:hover {
     border-color: rgb(0, 200, 255);
-    box-shadow: 0 0 20px rgb(150, 0, 250);
+    box-shadow: 0 0 40px rgb(6, 156, 211);
 }
 .thumbnails img.active {
     border-color: rgb(0, 200, 255);
-    box-shadow: 0 0 20px rgb(150, 0, 250);
+    box-shadow: 0 0 20px rgb(6, 156, 211);
   }
 .section_texto_productos {
     width: 40%;
@@ -185,4 +185,17 @@
 .precio_producto {
     font-size: 20px;
     margin-left: 10px;
+}
+.form_añadirCarrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 17px;
+    color: white;
+}
+.quantity {
+    width: 50px;
+}
+.boton_añadir {
+    width: 80%;
 }
