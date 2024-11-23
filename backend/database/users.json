@@ -1,6 +1,16 @@
 [
   {
-    "user_id": 1727937091224,
+    "id": 1,
+    "name": "John",
+    "last_name": "Doe",
+    "email": "otrogmailmas@gmail.com",
+    "province": "Coclé",
+    "user_type": "administrador",
+    "profile_image": "1732389449759.png",
+    "password": "$2b$10$8OIvcbBbQN..5VJQ5AwBY.CmKzsvq8u9WsHxZJ3n3htesmHhBbY/2"
+  },
+  {
+    "id": 1727937091224,
     "name": "Johncito",
     "last_name": "Konami",
     "profile_image": "1727937091104.jpg",
@@ -10,7 +20,7 @@
     "password": "$2b$10$zfEBry4AbRPSFB7nGp/bSOaaHLfxwps8ZJZ77LYPlLbn6XrgG8B1S"
   },
   {
-    "user_id": 1727943383053,
+    "id": 1727943383053,
     "name": "John",
     "last_name": "Doe",
     "profile_image": "1727943382823.png",

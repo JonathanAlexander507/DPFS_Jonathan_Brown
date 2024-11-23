@@ -1,15 +1,13 @@
 var express = require('express');
 var router = express.Router();
-let controller = require('../controller/indexcontroller')
-const isLoggedIn = require('../middleware/isLoggedIn');
-const cartController = require('../controller/cartcontroller')
+let controller = require('../controller/indexcontroller');
+const cartController = require('../controller/cartcontroller');
 
-/* GET home page. */
+/* GET home page */
 router.get('/', controller.index);
 
-router.get('/cart/productCart', isLoggedIn, cartController.showCart);
-
-router.post('/cart/addToCart', isLoggedIn, cartController.addToCart); // Asegúrate de que el usuario esté logueado
-
+/* Carrito de compras */
+router.get('/cart/productCart', cartController.showCart); // Mostrar el carrito
+router.post('/cart/addToCart', cartController.addToCart); // Añadir producto al carrito
 
 module.exports = router;

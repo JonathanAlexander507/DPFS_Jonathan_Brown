@@ -7,7 +7,7 @@
   <body>
     <header><%- include("../partials/header")%></header>
     <main class="cart_main">
-        <h1><%= title %></h1>
+        <h1 class="carrito_titulo"><%= title %></h1>
         <ul class="lista_carrito">
             <% let total = 0; %>
             <% let tax = 0.07; %> <!-- 7% de impuesto itbms -->
@@ -22,7 +22,7 @@
                             <p>Categoría: <%= item.Product.category %></p>
                             <p>Precio Unitario: <%= item.Product.price ? item.Product.price.toFixed(2) : '0.00' %> $</p>
                             <p>Cantidad: <%= item.quantity %></p>
-                            <p>Subtotal: <%= subtotal.toFixed(2) %> $</p>
+                            <p>Precio: <%= subtotal.toFixed(2) %> $</p>
                         </div>
                     </div>
         
@@ -43,7 +43,7 @@
         </ul>
         
         <div class="totales_carrito">
-            <h2>Total: <%= total.toFixed(2) %> $</h2>
+            <h2>Subtotal: <%= total.toFixed(2) %> $</h2>
             <h2>ITBMS (7%): <%= (total * tax).toFixed(2) %> $</h2>
             <h2>Total con ITBMS: <%= (total + (total * tax)).toFixed(2) %> $</h2>
         </div>

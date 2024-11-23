@@ -1,6 +1,6 @@
 [
   {
-
+    "id": 1,
     "name": "Laptop HP omen 16",
     "category": "computadoras",
     "brand": "HP",
@@ -19,7 +19,7 @@
     "image4": "hp_omen16(4).jpg"
   },
   {
-
+    "id": 2,
     "name": "Monitor LG UltraWide 29WQ500",
     "category": "perifericos",
     "brand": "LG",
@@ -38,7 +38,7 @@
     "image4": "pantalla_LGultrawide(4).jpg"
   },
   {
- 
+    "id": 3,
     "name": "Teclado mecánico inalámbrico Keychron K4",
     "category": "perifericos",
     "brand": "Keychron",
@@ -57,7 +57,7 @@
     "image4": "teclado_keychron_k4(4).jpg"
   },
   {
-  
+    "id": 4,
     "name": "Nintendo Switch",
     "category": "consolas",
     "brand": "Nintendo",
@@ -76,7 +76,7 @@
     "image4": "nintendo_switch(4).jpg"
   },
   {
-  
+    "id": 5,
     "name": "Volante Logitech G29 Con Palanca",
     "category": "perifericos",
     "brand": "Logitech",
@@ -95,7 +95,7 @@
     "image4": "logitech_g29(4).jpg"
   },
   {
- 
+    "id": 6,
     "name": "Logitech G 635 DTS",
     "category": "perifericos",
     "brand": "Logitech",
@@ -114,7 +114,7 @@
     "image4": "audifonos_logitech_g635(4).jpg"
   },
   {
- 
+    "id": 7,
     "name": "Silla Gamer Cougar Ranger",
     "category": "muebles",
     "brand": "Cougar",
@@ -133,7 +133,7 @@
     "image4": "sillagamer_cougar_rangerS(4).jpg"
   },
   {
-
+    "id": 8,
     "name": "PlayStation 5 Edicion Digital",
     "category": "consolas",
     "brand": "Sony",
@@ -152,7 +152,7 @@
     "image4": "ps5_pro(4).jpg"
   },
   {
- 
+    "id": 9,
     "name": "Logitech G 502 Lightspeed",
     "category": "perifericos",
     "brand": "Logitech",
@@ -171,7 +171,7 @@
     "image4": "mouse_logitech_g502(4).jpg"
   },
   {
-  
+    "id": 10,
     "name": "Laptop Asus ROG Strix G16",
     "category": "computadoras",
     "brand": "Asus",
@@ -190,7 +190,7 @@
     "image4": "asus_rog_strix_g16(4).jpg"
   },
   {
-
+    "id": 11,
     "name": "Smartphone REDMAGIC 9S Pro 5G",
     "category": "telefonos",
     "brand": "RedMagic",
@@ -209,7 +209,7 @@
     "image4": "red_magic_9s(4).jpg"
   },
   {
-
+    "id": 12,
     "name": "Escritorio Gamer CubiCubi",
     "category": "muebles",
     "brand": "CubiCubi",

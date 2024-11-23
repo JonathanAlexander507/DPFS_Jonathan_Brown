@@ -228,8 +228,8 @@ export default function Dashboard() {
                   <TableBody>
                     {users.length > 0 ? (
                       users.map((user) => (
-                        <TableRow key={user.user_id}>
-                          <TableCell>{user.user_id}</TableCell>
+                        <TableRow key={user.id}>
+                          <TableCell>{user.id}</TableCell>
                           <TableCell>{user.name}</TableCell>
                           <TableCell>{user.email}</TableCell>
                         </TableRow>

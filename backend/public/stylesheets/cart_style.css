@@ -1,4 +1,8 @@
 /* Main container styles */
+.carrito_titulo {
+  color: white;
+  text-shadow: 0 0 5px rgb(150, 0, 250);
+}
 .cart_main {
     max-width: 1200px;
     margin: 0 auto;
@@ -11,6 +15,8 @@
   .lista_carrito {
     list-style-type: none;
     padding: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgb(150, 0, 250);
   }
   
   .item_carrito {
@@ -18,7 +24,8 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgb(0, 200, 255);
-    padding: 20px 0;
+    padding: 20px 10px;
+    margin: 5px 0;
   }
   
   /* Product info styles */
@@ -38,19 +45,18 @@
   }
   
   .detalles_producto {
-    flex: 1;
+    display: flex;
+    justify-content: center;
   }
   
   .detalles_producto h3 {
-    margin: 0 0 10px 0;
     font-size: 18px;
-    color: #333;
+    color: white;
   }
   
   .detalles_producto p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #666;
+    font-size: 18px;
+    color: white;
   }
   
   /* Form styles */
@@ -78,6 +84,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 0 10px;
   }
   
   .formulario_actualizar button:hover,
@@ -98,14 +105,18 @@
     margin-top: 30px;
     text-align: right;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     border-radius: 5px;
+    border: 1px solid rgb(150, 0, 250);
   }
   
   .totales_carrito h2 {
     margin: 10px 0;
     font-size: 18px;
-    color: #333;
+    color: white;
+    border-bottom: 1px solid rgb(0, 200, 255);
+    margin: 15px 0;
   }
   
   /* Responsive design */
